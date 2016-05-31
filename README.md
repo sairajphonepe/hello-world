@@ -1,2 +1,4 @@
 # hello-world
-just another repository
+Hi there,
+
+This is devendra, wating for some magic to happen.
