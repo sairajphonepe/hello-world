@@ -8,7 +8,7 @@ function buildPaymentRequest() {
     }
   
     const supportedInstruments = [{
-      supportedMethods: 'https://bobpay.xyz/pay'
+      supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay'
     }
     ];
   
@@ -16,8 +16,8 @@ function buildPaymentRequest() {
       total: {
         label: 'Total',
         amount: {
-          currency: 'USD',
-          value: '1.00',
+          currency: 'INR',
+          value: '100.00',
         },
       },
     };
