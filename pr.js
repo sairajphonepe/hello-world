@@ -7,14 +7,14 @@ function buildPaymentRequest() {
       return null;
     }
     
-    const supportedInstruments = [{
-        supportedMethods: 'https://bobpay.xyz/pay'
-    }];
-  
 //     const supportedInstruments = [{
-//       supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay'
-//     }
-//     ];
+//         supportedMethods: 'https://bobpay.xyz/pay'
+//     }];
+  
+    const supportedInstruments = [{
+      supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay'
+    }
+    ];
   
     const details = {
       total: {
