@@ -8,11 +8,8 @@ function buildPaymentRequest() {
     }
     
     const supportedInstruments = [{
-        supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay'
-    }];
-  
-    const details = {
-      data: {
+        supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay',
+        data: {
         pa: "DOCUBAY@ybl",
         pn: "DOCUBAY",
         am: "1.00",
@@ -28,6 +25,16 @@ function buildPaymentRequest() {
         utm_campaign: "DEBIT",
         environment: "TEST",
         apiVersion: "12",
+      }
+    }];
+  
+    const details = {
+      total: {
+        label: 'Total',
+        amount: {
+          currency: 'INR',
+          value: '101',
+        }
       }
     };
   
