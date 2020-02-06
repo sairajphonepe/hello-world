@@ -8,7 +8,7 @@ function buildPaymentRequest() {
     }
     
     const supportedInstruments = [{
-        supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay',
+        supportedMethods: 'https://phonepay.herokuapp.com/pay',
         data: {
             pa: "FKRT@ybl",
             pn: "Flipkart",
