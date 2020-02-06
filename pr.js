@@ -10,15 +10,6 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: 'https://phonepay.herokuapp.com/pay'
     }];
-    
-//     const supportedInstruments = [{
-//         supportedMethods: 'https://bobpay.xyz/pay''https://phonepay.herokuapp.com/pay'
-//     }];
-  
-//     const supportedInstruments = [{
-//       supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay'
-//     }
-//     ];
   
     const details = {
       total: {
