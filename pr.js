@@ -8,17 +8,27 @@ function buildPaymentRequest() {
     }
     
     const supportedInstruments = [{
-        supportedMethods: 'https://phonepay.herokuapp.com/pay'
+        supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay'
     }];
   
     const details = {
-      total: {
-        label: 'Total',
-        amount: {
-          currency: 'INR',
-          value: '100.00',
-        },
-      },
+      data: {
+        pa: "DOCUBAY@ybl",
+        pn: "DOCUBAY",
+        am: "1.00",
+        mam: "1.00",
+        tid: "YBL24d4362615904b96ac08018b9a57b6bb",
+        tr: "T1911211610268464663990",
+        tn: "Payment+for+5dd6699868c10b26364d1b09",
+        mc: "7999",
+        mode: "04",
+        purpose: "00",
+        utm_source: 104577,
+        utm_medium: "DOCUBAY",
+        utm_campaign: "DEBIT",
+        environment: "TEST",
+        apiVersion: "12",
+      }
     };
   
     let request = null;
