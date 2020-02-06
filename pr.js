@@ -65,7 +65,6 @@ function buildPaymentRequest() {
   function doThing() {
     request = null;
     request = buildPaymentRequest();
-    console.log("In do things");
   }
   
   /**
