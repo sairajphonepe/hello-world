@@ -9,23 +9,7 @@ function buildPaymentRequest() {
     
     const supportedInstruments = [{
         supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay',
-        data: {
-        pa: "FKRT@ybl",
-        pn: "Flipkart",
-        am: Number(document.getElementById("inputPrice").value).toFixed(2),
-        mam: Number(document.getElementById("inputPrice").value).toFixed(2),
-        tid: "YBL2ae29f9fd2cd41a4a2ee1939df69115e",
-        tr: "T2002061852116120954712",
-        tn: "Payment%20for%20TX117785062868474000",
-        mc: "5311",
-        mode: "04",
-        purpose: "00",
-        utm_source: 104577,
-        utm_medium: "DOCUBAY",
-        utm_campaign: "DEBIT",
-        environment: "TEST",
-        apiVersion: "12",
-      }
+        data: "upi://pay?pa=FKRT@ybl&pn=Flipkart&am=424.00&mam=424.00&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
     }];
   
     const details = {
