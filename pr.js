@@ -10,8 +10,8 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: 'https://mercury-stg.phonepe.com/transact/pay',
         data: {
-        pa: "DOCUBAY@ybl",
-        pn: "DOCUBAY",
+        pa: "FKRT@ybl",
+        pn: "Flipkart",
         am: Number(document.getElementById("inputPrice").value).toFixed(2),
         mam: Number(document.getElementById("inputPrice").value).toFixed(2),
         tid: "YBL2ae29f9fd2cd41a4a2ee1939df69115e",
