@@ -12,8 +12,8 @@ function buildPaymentRequest() {
         data: {
         pa: "DOCUBAY@ybl",
         pn: "DOCUBAY",
-        am: "1.00",
-        mam: "1.00",
+        am: Number(document.getElementById("inputPrice").value).toFixed(2),
+        mam: Number(document.getElementById("inputPrice").value).toFixed(2),
         tid: "YBL24d4362615904b96ac08018b9a57b6bb",
         tr: "T1911211610268464663990",
         tn: "Payment+for+5dd6699868c10b26364d1b09",
@@ -33,7 +33,7 @@ function buildPaymentRequest() {
         label: 'Total',
         amount: {
           currency: 'INR',
-          value: '101',
+          value: document.getElementById("inputPrice").value,
         }
       }
     };
@@ -64,6 +64,14 @@ function buildPaymentRequest() {
   }
   
   let request = buildPaymentRequest();
+
+  document.getElementsByName("price")[0].addEventListener('change', doThing);
+
+  function doThing() {
+    request = null;
+    request = buildPaymentRequest();
+    console.log("In do things");
+  }
   
   /**
    * Handles the response from PaymentRequest.show().
@@ -100,4 +108,3 @@ function buildPaymentRequest() {
       request = buildPaymentRequest();
     }
   }
-  
