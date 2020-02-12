@@ -10,7 +10,7 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: "https://phonepay.herokuapp.com/pay",
         data: {
-            url: "upi://pay?pa=FKRT@ybl&pn=Flipkart&am=424.00&mam=424.00&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
+            url: "upi://pay?pa=M2306160483220675579140@ybl&pn=HP-TEST&am=1.00&mam=1.00&tid=YBL32a1e400ea4e4130ab5579a58599a18f&tr=T2002121434330431756908&tn=Payment+for+OD1234&mc=5311&mode=04&purpose=00&utm_campaign=DEBIT&utm_medium=M2306160483220675579140&utm_source=TX1581491693149"
         }
     }];
   
