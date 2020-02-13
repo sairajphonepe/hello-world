@@ -50,7 +50,7 @@ function buildPaymentRequest() {
     return request;
   }
   
-  let request = buildPaymentRequest();
+  let request;
 
   document.getElementsByName("price")[0].addEventListener('change', doThing);
 
