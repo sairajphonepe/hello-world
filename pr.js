@@ -10,7 +10,7 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: "https://phonepay.herokuapp.com/pay",
         data: {
-            url: "upi://pay?pa=M2306160483220675579140@ybl&pn=Test%20Merchant&am=11.00&mam=11.00&tr=TX1581563982442&tn=Payment%20for%20TX1581563982442&mc=7299&mode=04&purpose=00"
+            url: "upi://pay?pa=M2306160483220675579140@ybl&pn=Test%20Merchant&am=11.00&mam=11.00&tr=TX1581579708796&tn=Payment%20for%20TX1581579708796&mc=7299&mode=04&purpose=00"
         }
     }];
   
