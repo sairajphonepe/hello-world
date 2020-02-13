@@ -10,7 +10,7 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: "https://phonepay.herokuapp.com/pay",
         data: {
-            url: "upi://pay?pa=M2306160483220675579140@ybl&pn=Test%20Merchant&am=12.00&mam=12.00&tr=TX1581560029121&tn=Payment%20for%20TX1581560029121&mc=7299&mode=04&purpose=00"
+            url: "upi://pay?pa=M2306160483220675579140@ybl&pn=Test%20Merchant&am=13.00&mam=13.00&tr=TX1581560596445&tn=Payment%20for%20TX1581560596445&mc=7299&mode=04&purpose=00"
         }
     }];
   
@@ -65,7 +65,7 @@ function buildPaymentRequest() {
   function handlePaymentResponse(response) {
       var fetchOptions = {
             method: 'POST',
-            credentials: include,
+            credentials: 'include',
             body: JSON.stringify(response)
           };
           var serverPaymentRequest = new Request('secure/payment/endpoint');
