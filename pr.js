@@ -10,7 +10,7 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: "https://phonepay.herokuapp.com/pay",
         data: {
-            url: "upi://pay?pa=M2306160483220675579140@ybl&pn=Test%20Merchant&am=11.00&mam=11.00&tr=TX1581579708796&tn=Payment%20for%20TX1581579708796&mc=7299&mode=04&purpose=00"
+            url: document.getElementById("inputPrice").value
         }
     }];
   
@@ -20,7 +20,7 @@ function buildPaymentRequest() {
         label: 'Total',
         amount: {
           currency: 'INR',
-          value: document.getElementById("inputPrice").value,
+          value: '100',
         }
       }
     };
@@ -52,7 +52,7 @@ function buildPaymentRequest() {
   
   let request = buildPaymentRequest();
 
-//   document.getElementsByName("price")[0].addEventListener('change', doThing);
+  document.getElementsByName("price")[0].addEventListener('change', doThing);
 
   function doThing() {
     request = null;
