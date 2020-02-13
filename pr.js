@@ -71,13 +71,13 @@ function buildPaymentRequest() {
           };
           var serverPaymentRequest = new Request('secure/payment/endpoint');
           fetch(serverPaymentRequest, fetchOptions).then( response1 => {
-            if (response1.status < 400) {
+//             if (response1.status < 400) {
               response.complete("success");
-            } else {
-              response.complete("fail");
-            };
+//             } else {
+//               response.complete("fail");
+//             };
           }).catch( reason => {
-            paymentResponse.complete("fail");
+            response.complete("fail");
           });
 //       response.complete('success')
 //         .then(function() {
