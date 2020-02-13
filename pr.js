@@ -51,7 +51,7 @@ function buildPaymentRequest() {
   
   let request = buildPaymentRequest();
 
-  document.getElementsByName("price")[0].addEventListener('change', doThing);
+//   document.getElementsByName("price")[0].addEventListener('change', doThing);
 
   function doThing() {
     request = null;
@@ -63,14 +63,29 @@ function buildPaymentRequest() {
    * Handles the response from PaymentRequest.show().
    */
   function handlePaymentResponse(response) {
-      response.complete('success')
-        .then(function() {
-          done('This is a demo website. No payment will be processed.', response);
-        })
-        .catch(function(err) {
-          error(err);
-          request = buildPaymentRequest();
-        });
+      var fetchOptions = {
+            method: 'POST',
+            credentials: include,
+            body: JSON.stringify(response)
+          };
+          var serverPaymentRequest = new Request('secure/payment/endpoint');
+          fetch(serverPaymentRequest, fetchOptions).then( response1 => {
+            if (response1.status < 400) {
+              response.complete("success");
+            } else {
+              response.complete("fail");
+            };
+          }).catch( reason => {
+            paymentResponse.complete("fail");
+          });
+//       response.complete('success')
+//         .then(function() {
+//           done('This is a demo website. No payment will be processed.', response);
+//         })
+//         .catch(function(err) {
+//           error(err);
+//           request = buildPaymentRequest();
+//         });
   }
   
   /**
