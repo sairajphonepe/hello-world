@@ -64,6 +64,11 @@ function buildPaymentRequest() {
    * Handles the response from PaymentRequest.show().
    */
   function handlePaymentResponse(response) {
+      document.getElementById("msg").innerHTML = `<div>${JSON.stringify(
+response, null, "\t\t"
+)}</div>`;
+      return;
+      
       var fetchOptions = {
             method: 'POST',
             credentials: 'include',
