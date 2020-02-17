@@ -1,3 +1,4 @@
+let mId;
 /**
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
@@ -6,6 +7,12 @@ function buildPaymentRequest() {
     if (!window.PaymentRequest) {
       return null;
     }
+    
+//     var result = document.getElementById("inputPrice").value ? document.getElementById("inputPrice").value : null;
+//     if(!result){
+//         return;
+//     }
+//     mId = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}').;
     
     const supportedInstruments = [{
         supportedMethods: "https://phonepay.herokuapp.com/pay",
@@ -64,26 +71,40 @@ function buildPaymentRequest() {
    * Handles the response from PaymentRequest.show().
    */
   function handlePaymentResponse(response) {
-      document.getElementById("msg").innerHTML = `<div>${JSON.stringify(
-response, null, "\t\t"
-)}</div>`;
-      return;
+      if(response && response.details && response.details.result && response.details.result.indexOf('Status=Success')){
+          var result = response.details.result;
+          var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+          var txnId = responseObj.txnRef;
+          var xhttp = new XMLHttpRequest(),
+            url = "./Proxy.jsp?mId=M2306160483220675579140&txnId=" + txnId;
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myData = JSON.parse(this.response);
+                    //This is temporary
+                    //Adding this so that bankId OTHERS will be displayed in the select box
+                    console.log("Here transaction status after the fetch api call is " + myData.data.responseCode);
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+
+      }
       
-      var fetchOptions = {
-            method: 'POST',
-            credentials: 'include',
-            body: JSON.stringify(response)
-          };
-          var serverPaymentRequest = new Request('secure/payment/endpoint');
-          fetch(serverPaymentRequest, fetchOptions).then( response1 => {
-//             if (response1.status < 400) {
-              response.complete("success");
-//             } else {
-//               response.complete("fail");
-//             };
-          }).catch( reason => {
-            response.complete("fail");
-          });
+//       var fetchOptions = {
+//             method: 'POST',
+//             credentials: 'include',
+//             body: JSON.stringify(response)
+//           };
+//           var serverPaymentRequest = new Request('secure/payment/endpoint');
+//           fetch(serverPaymentRequest, fetchOptions).then( response1 => {
+// //             if (response1.status < 400) {
+//               response.complete("success");
+// //             } else {
+// //               response.complete("fail");
+// //             };
+//           }).catch( reason => {
+//             response.complete("fail");
+//           });
 //       response.complete('success')
 //         .then(function() {
 //           done('This is a demo website. No payment will be processed.', response);
