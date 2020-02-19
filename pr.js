@@ -83,7 +83,8 @@ function buildPaymentRequest() {
                     //This is temporary
                     //Adding this so that bankId OTHERS will be displayed in the select box
                     console.log("Here transaction status after the fetch api call is " + myData.data.responseCode);
-                }
+                    response.complete("success");
+                } 
             };
             xhttp.open("GET", url, true);
             xhttp.send();
