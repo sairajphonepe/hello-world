@@ -71,25 +71,24 @@ function buildPaymentRequest() {
    * Handles the response from PaymentRequest.show().
    */
   function handlePaymentResponse(response) {
-      if(response && response.details && response.details.result && response.details.result.indexOf('Status=Success')){
-          var result = response.details.result;
-          var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-          var txnId = responseObj.txnRef;
-          var xhttp = new XMLHttpRequest(),
-            url = "./Proxy.jsp?mId=M2306160483220675579140&txnId=" + txnId;
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var myData = JSON.parse(this.response);
-                    //This is temporary
-                    //Adding this so that bankId OTHERS will be displayed in the select box
-                    console.log("Here transaction status after the fetch api call is " + myData.data.responseCode);
-                    response.complete("success");
-                } 
-            };
-            xhttp.open("GET", url, true);
-            xhttp.send();
+      
+//       if(response && response.details && response.details.result && response.details.result.indexOf('Status=Success')){
+//           var result = response.details.result;
+//           var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+//           var txnId = responseObj.txnRef;
+//           var xhttp = new XMLHttpRequest(),
+//             url = "./Proxy.jsp?mId=M2306160483220675579140&txnId=" + txnId;
+//             xhttp.onreadystatechange = function() {
+//                 if (this.readyState == 4 && this.status == 200) {
+//                     var myData = JSON.parse(this.response);
+// //                     console.log("Here transaction status after the fetch api call is " + myData.data.responseCode);
+//                     response.complete("success");
+//                 } 
+//             };
+//             xhttp.open("GET", url, true);
+//             xhttp.send();
 
-      }
+//       }
       
 //       var fetchOptions = {
 //             method: 'POST',
@@ -106,14 +105,14 @@ function buildPaymentRequest() {
 //           }).catch( reason => {
 //             response.complete("fail");
 //           });
-//       response.complete('success')
-//         .then(function() {
-//           done('This is a demo website. No payment will be processed.', response);
-//         })
-//         .catch(function(err) {
-//           error(err);
-//           request = buildPaymentRequest();
-//         });
+      response.complete('success')
+        .then(function() {
+          done('This is a demo website. No payment will be processed.', response);
+        })
+        .catch(function(err) {
+          error(err);
+          request = buildPaymentRequest();
+        });
   }
   
   /**
