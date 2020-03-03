@@ -17,7 +17,7 @@ function buildPaymentRequest() {
     const supportedInstruments = [{
         supportedMethods: "https://phonepay.herokuapp.com/pay",
         data: {
-            url: document.getElementById("inputPrice").value
+//             url: document.getElementById("inputPrice").value
         }
     }];
   
@@ -34,25 +34,25 @@ function buildPaymentRequest() {
   
     let request = null;
   
-    try {
+//     try {
       request = new PaymentRequest(supportedInstruments, details);
-      if (request.canMakePayment) {
-        request.canMakePayment().then(function(result) {
-          info(result ? 'Can make payment' : 'Cannot make payment');
-        }).catch(function(err) {
-          error(err);
-        });
+//       if (request.canMakePayment) {
+//         request.canMakePayment().then(function(result) {
+//           info(result ? 'Can make payment' : 'Cannot make payment');
+//         }).catch(function(err) {
+//           error(err);
+//         });
+//       }
+//       if (request.hasEnrolledInstrument) {
+//         request.hasEnrolledInstrument().then(function(result) {
+//           info(result ? 'Has enrolled instrument' : 'No enrolled instrument');
+//         }).catch(function(err) {
+//           error(err);
+//         });
       }
-      if (request.hasEnrolledInstrument) {
-        request.hasEnrolledInstrument().then(function(result) {
-          info(result ? 'Has enrolled instrument' : 'No enrolled instrument');
-        }).catch(function(err) {
-          error(err);
-        });
-      }
-    } catch (e) {
-      error('Developer mistake: \'' + e.message + '\'');
-    }
+//     } catch (e) {
+//       error('Developer mistake: \'' + e.message + '\'');
+//     }
   
     return request;
   }
@@ -125,12 +125,43 @@ function buildPaymentRequest() {
     }
   
     try {
-      request.show()
-        .then(handlePaymentResponse)
-        .catch(function(err) {
+        if (request.canMakePayment) {
+        request.canMakePayment().then(function(result) {
+            const supportedInstruments = [{
+                supportedMethods: "https://phonepay.herokuapp.com/pay",
+                data: {
+                    url: document.getElementById("inputPrice").value
+                }
+            }];
+
+            const details = {
+                id: "1111-71ca4e9f-748c-4de7-af7b-a84f3da75b4e-temp",
+              total: {
+                label: 'Total',
+                amount: {
+                  currency: 'INR',
+                  value: '100',
+                }
+              }
+            };
+            request = new PaymentRequest(supportedInstruments, details);
+            request.show()
+                .then(handlePaymentResponse)
+                .catch(function(err) {
+                  error(err);
+                  request = buildPaymentRequest();
+                });
+//           info(result ? 'Can make payment' : 'Cannot make payment');
+        }).catch(function(err) {
           error(err);
-          request = buildPaymentRequest();
         });
+      }
+//       request.show()
+//         .then(handlePaymentResponse)
+//         .catch(function(err) {
+//           error(err);
+//           request = buildPaymentRequest();
+//         });
     } catch (e) {
       error('Developer mistake: \'' + e.message + '\'');
       request = buildPaymentRequest();
