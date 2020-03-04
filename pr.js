@@ -125,26 +125,8 @@ function buildPaymentRequest() {
     }
   
     try {
-        if (request.canMakePayment) {
-        request.canMakePayment().then(function(result) {
-//             const supportedInstruments = [{
-//                 supportedMethods: "https://phonepay.herokuapp.com/pay",
-//                 data: {
-//                     url: document.getElementById("inputPrice").value
-//                 }
-//             }];
-
-//             const details = {
-//                 id: "1111-71ca4e9f-748c-4de7-af7b-a84f3da75b4e-temp",
-//               total: {
-//                 label: 'Total',
-//                 amount: {
-//                   currency: 'INR',
-//                   value: '100',
-//                 }
-//               }
-//             };
-//             request = new PaymentRequest(supportedInstruments, details);
+//         if (request.canMakePayment) {
+        request.canMakePayment().then(canPay => {
             request.show()
                 .then(handlePaymentResponse)
                 .catch(function(err) {
@@ -155,7 +137,7 @@ function buildPaymentRequest() {
         }).catch(function(err) {
           error(err);
         });
-      }
+//       }
 //       request.show()
 //         .then(handlePaymentResponse)
 //         .catch(function(err) {
