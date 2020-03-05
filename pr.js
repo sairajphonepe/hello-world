@@ -127,6 +127,7 @@ function buildPaymentRequest() {
     try {
 //         if (request.canMakePayment) {
         request.canMakePayment().then(canPay => {
+            info(canPay ? 'Can make payment from buy button click' : 'Cannot make payment from buy button click');
             request.show()
                 .then(handlePaymentResponse)
                 .catch(function(err) {
