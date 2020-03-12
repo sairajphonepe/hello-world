@@ -28,6 +28,10 @@ body {
     animation-name: popup;
     color: #c62828;
   }
+
+ .hiddenElement {
+    display: none;
+  }
   
   @keyframes popup {
     from {
