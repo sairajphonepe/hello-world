@@ -59,12 +59,79 @@ function buildPaymentRequest() {
   
   let request;
 
-  document.getElementsByName("price")[0].addEventListener('change', doThing);
+  // document.getElementsByName("price")[0].addEventListener('change', doThing);
 
-  function doThing() {
+  function onProcessClicked() {
     request = null;
     request = buildPaymentRequest();
-    console.log("Inside do things");
+    // var amount = document.getElementById("inputPrice").value;
+    // var payload = {
+    //    "merchantId":"M2306160483220675579140",
+    //    "transactionId":"TX" + Date.now(),
+    //    "merchantUserId":"U123456789",
+    //    "amount":amount,
+    //    "paymentScope": "MSITE_INTENT"
+    // },
+    // requestValue = btoa(JSON.stringify(payload));
+    // sha256(requestValue).then(obj =>{
+    //   console.log("here value is" + obj.hashHex + "###1");
+
+    //   var xhttp = new XMLHttpRequest(),
+    //    url = "./proxy2.jsp?xVerify=" + obj.hashHex + "###1",
+    //    tagsObj={
+    //     "request": obj.message
+    //    };
+       
+    //    xhttp.onreadystatechange = function() {
+    //         if (this.readyState == 4 && this.status == 200) {
+    //             //return this.response;
+    //            var t1 = JSON.parse(this.response);
+    //            console.log("we are here in on ready state change handler");
+    //         }
+    //     };
+
+    //    xhttp.open("POST", url, true);
+    //    xhttp.setRequestHeader("Content-type", "application/json");
+    //    xhttp.send(JSON.stringify(tagsObj));
+
+
+    // });
+
+
+    request.canMakePayment().then(function(result) {
+      if(result){
+        console.log("We are here in canMake payment handler");
+        document.getElementById("payByPhonepeButton").removeAttribute("class");
+      } else {
+        console.log("We are in else part of can make payment handler");
+      }
+      // info(result ? 'Can make payment' : 'Cannot make payment');
+    }).catch(function(err) {
+      error(err);
+    });
+
+    // request.hasEnrolledInstrument().then(function(result1) {
+    //   info(result1 ? 'Has enrolled instrument' : 'No enrolled instrument');
+    // }).catch(function(err) {
+    //   error(err);
+    // });
+
+  }
+
+  async function sha256(message) {
+      // encode as UTF-8
+      const msgBuffer = new TextEncoder('utf-8').encode(message + "/v4/debit8289e078-be0b-484d-ae60-052f117f8deb");                    
+
+      // hash the message
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+      // convert ArrayBuffer to Array
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+      // convert bytes to hex string                  
+      const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+      return {"message": message,
+                "hashHex": hashHex};
   }
   
   /**
@@ -118,7 +185,7 @@ function buildPaymentRequest() {
   /**
    * Launches payment request for Bob Pay.
    */
-  function onBuyClicked() { // eslint-disable-line no-unused-vars
+  function onPayClick() { // eslint-disable-line no-unused-vars
     if (!window.PaymentRequest || !request) {
       error('PaymentRequest API is not supported.');
       return;
@@ -126,8 +193,7 @@ function buildPaymentRequest() {
   
     try {
 //         if (request.canMakePayment) {
-        request.canMakePayment().then(canPay => {
-            info(canPay ? 'Can make payment from buy button click' : 'Cannot make payment from buy button click');
+        // request.canMakePayment().then(canPay => {
             request.show()
                 .then(handlePaymentResponse)
                 .catch(function(err) {
@@ -135,9 +201,9 @@ function buildPaymentRequest() {
                   request = buildPaymentRequest();
                 });
 //           info(result ? 'Can make payment' : 'Cannot make payment');
-        }).catch(function(err) {
-          error(err);
-        });
+        // }).catch(function(err) {
+        //   error(err);
+        // });
 //       }
 //       request.show()
 //         .then(handlePaymentResponse)
