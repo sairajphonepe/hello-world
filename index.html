@@ -11,8 +11,9 @@
   <div id="contents">
     <h1>Phonepe mIntent</h1>
     <p>This merchant accepts Phonepe only.</p>
-    <p>Add Intent Url here <input style="font-weight: bold; border-color: olivedrab" name="price" id="inputPrice"/></p>
-    <p><button style="font-weight: bolder;" onclick="onBuyClicked()">Pay</button></p>
+    <p>Enter redirect url: <input style="font-weight: bold; border-color: olivedrab" name="price" id="inputPrice"/></p>
+    <p><button style="font-weight: bolder;" onclick="onProcessClicked()">Proceed</button></p>
+    <p><button id="payByPhonepeButton" style="font-weight: bolder;" onclick="onPayClick()" class="hiddenElement">Pay By Phonepe</button></p>
   </div>
   <pre id="msg"></pre>
   <script src="util.js"></script>
