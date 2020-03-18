@@ -64,7 +64,7 @@ function buildPaymentRequest(url) {
 //                 //return this.response;
 //                // var t1 = JSON.parse(this.response);
 //                var result = JSON.parse(this.response);
-               info(result.data.redirectURL);
+//                info(result.data.redirectURL);
                request = null;
                 request = buildPaymentRequest(amount);
 //       request = buildPaymentRequest(result.data.redirectURL);
