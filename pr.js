@@ -54,7 +54,7 @@ function buildPaymentRequest(url) {
     //   console.log("here value is" + obj.hashHex + "###1");
 
       var xhttp = new XMLHttpRequest(),
-       url = "./proxy2.jsp?xVerify=" + xVerifyCode,
+       url = "/proxy2.jsp?xVerify=" + xVerifyCode,
        tagsObj={
         "request": requestValue
        };
