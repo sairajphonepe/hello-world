@@ -53,20 +53,21 @@ function buildPaymentRequest(url) {
     // sha256(requestValue).then(obj =>{
     //   console.log("here value is" + obj.hashHex + "###1");
 
-      var xhttp = new XMLHttpRequest(),
-       url = "https://devendradev.github.io/hello-world/proxy2.jsp?xVerify=" + xVerifyCode,
-       tagsObj={
-        "request": requestValue
-       };
+//       var xhttp = new XMLHttpRequest(),
+//        url = "https://devendradev.github.io/hello-world/proxy2.jsp?xVerify=" + xVerifyCode,
+//        tagsObj={
+//         "request": requestValue
+//        };
        
-       xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                //return this.response;
-               // var t1 = JSON.parse(this.response);
-               var result = JSON.parse(this.response);
+//        xhttp.onreadystatechange = function() {
+//             if (this.readyState == 4 && this.status == 200) {
+//                 //return this.response;
+//                // var t1 = JSON.parse(this.response);
+//                var result = JSON.parse(this.response);
                info(result.data.redirectURL);
                request = null;
-                request = buildPaymentRequest(result.data.redirectURL);
+                request = buildPaymentRequest(amount);
+//       request = buildPaymentRequest(result.data.redirectURL);
                request.canMakePayment().then(function(result) {
                   if(result){
                     console.log("We are here in canMake payment handler");
@@ -80,12 +81,12 @@ function buildPaymentRequest(url) {
                 });
                // var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
                // console.log("we are here in on ready state change handler");
-            }
-        };
+//             }
+//         };
 
-       xhttp.open("POST", url, true);
-       xhttp.setRequestHeader("Content-type", "application/json");
-       xhttp.send(JSON.stringify(tagsObj));
+//        xhttp.open("POST", url, true);
+//        xhttp.setRequestHeader("Content-type", "application/json");
+//        xhttp.send(JSON.stringify(tagsObj));
 
 
     // });
