@@ -73,10 +73,9 @@ function getRequest(){
 //                // var t1 = JSON.parse(this.response);
 //                var result = JSON.parse(this.response);
 //                info(result.data.redirectURL);
-               request = null;
-                request = buildPaymentRequest(amount);
+               setRequest(buildPaymentRequest(amount));
 //       request = buildPaymentRequest(result.data.redirectURL);
-               request.canMakePayment().then(function(result) {
+               getRequest().canMakePayment().then(function(result) {
                   if(result){
                     console.log("We are here in canMake payment handler");
                     document.getElementById("payByPhonepeButton").removeAttribute("class");
@@ -247,7 +246,7 @@ function getRequest(){
         })
         .catch(function(err) {
           error(err);
-          request = buildPaymentRequest();
+//           request = buildPaymentRequest();
         });
   }
   
@@ -255,7 +254,7 @@ function getRequest(){
    * Launches payment request for Bob Pay.
    */
   function onPayClick() { // eslint-disable-line no-unused-vars
-    if (!window.PaymentRequest || !request) {
+    if (!window.PaymentRequest || !getRequest()) {
       error('PaymentRequest API is not supported.');
       return;
     }
@@ -263,7 +262,7 @@ function getRequest(){
     try {
 //         if (request.canMakePayment) {
         // request.canMakePayment().then(canPay => {
-            request.show()
+            getRequest().show()
                 .then(handlePaymentResponse)
                 .catch(function(err) {
                   error(err);
@@ -282,6 +281,6 @@ function getRequest(){
 //         });
     } catch (e) {
       error('Developer mistake: \'' + e.message + '\'');
-      request = buildPaymentRequest();
+//       request = buildPaymentRequest();
     }
   }
