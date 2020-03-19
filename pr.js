@@ -26,15 +26,23 @@ function buildPaymentRequest(url) {
       }
     };
   
-    let request = null;
+    let request1 = null;
   
 //     try {
-      request = new PaymentRequest(supportedInstruments, details);
+      request1 = new PaymentRequest(supportedInstruments, details);
   
-    return request;
+    return request1;
   }
   
   let request;
+
+function setRequest(req){
+    request = req;
+}
+
+function getRequest(){
+    return request;
+}
 
   // document.getElementsByName("price")[0].addEventListener('change', doThing);
 
