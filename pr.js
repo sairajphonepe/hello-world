@@ -78,7 +78,13 @@ function getRequest(){
                getRequest().canMakePayment().then(function(result) {
                   if(result){
                     console.log("We are here in canMake payment handler");
-                    document.getElementById("payByPhonepeButton").removeAttribute("class");
+                      getRequest().show()
+                        .then(handlePaymentResponse)
+                        .catch(function(err) {
+                          error(err);
+//                           request = buildPaymentRequest();
+                         });
+//                     document.getElementById("payByPhonepeButton").removeAttribute("class");
                   } else {
                     console.log("We are in else part of can make payment handler");
                   }
