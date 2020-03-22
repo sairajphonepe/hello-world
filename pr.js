@@ -22,7 +22,6 @@ function buildPaymentRequest() {
     }];
   
     const details = {
-        id: "1111-71ca4e9f-748c-4de7-af7b-a84f3da75b4e-temp",
       total: {
         label: 'Total',
         amount: {
@@ -72,7 +71,7 @@ function buildPaymentRequest() {
    */
   function handlePaymentResponse(response) {
       
-//       if(response && response.details && response.details.result && response.details.result.indexOf('Status=Success')){
+      if(response && response.details && response.details.result && response.details.result.indexOf('Status=Success')){
 //           var result = response.details.result;
 //           var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
 //           var txnId = responseObj.txnRef;
@@ -81,14 +80,14 @@ function buildPaymentRequest() {
 //             xhttp.onreadystatechange = function() {
 //                 if (this.readyState == 4 && this.status == 200) {
 //                     var myData = JSON.parse(this.response);
-// //                     console.log("Here transaction status after the fetch api call is " + myData.data.responseCode);
-//                     response.complete("success");
+                    info("Here transaction status after the fetch api call is " + response.details.result); //myData.data.responseCode);
+                    response.complete("success");
 //                 } 
 //             };
 //             xhttp.open("GET", url, true);
 //             xhttp.send();
 
-//       }
+      }
       
 //       var fetchOptions = {
 //             method: 'POST',
@@ -105,14 +104,16 @@ function buildPaymentRequest() {
 //           }).catch( reason => {
 //             response.complete("fail");
 //           });
-      response.complete('success')
-        .then(function() {
-          done('This is a demo website. No payment will be processed.', response);
-        })
-        .catch(function(err) {
-          error(err);
-          request = buildPaymentRequest();
-        });
+      
+      
+//       response.complete('success')
+//         .then(function() {
+//           done('This is a demo website. No payment will be processed.', response);
+//         })
+//         .catch(function(err) {
+//           error(err);
+//           request = buildPaymentRequest();
+//         });
   }
   
   /**
