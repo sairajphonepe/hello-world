@@ -9,7 +9,7 @@ function buildPaymentRequest(url) {
     }
     
     const supportedInstruments = [{
-        supportedMethods: "https://mercury-stg.phonepe.com/transact/pay/",
+        supportedMethods: "https://mercury-stg.phonepe.com/transact/pay",
         data: {
             url: url
         }
