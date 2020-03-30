@@ -9,14 +9,13 @@ function buildPaymentRequest(url) {
     }
     
     const supportedInstruments = [{
-        supportedMethods: "https://mercury-stg.phonepe.com/transact/pay",
+        supportedMethods: "https://mercury.phonepe.com/transact/pay",
         data: {
             url: url
         }
     }];
   
     const details = {
-        id: "1111-71ca4e9f-748c-4de7-af7b-a84f3da75b4e-temp",
       total: {
         label: 'Total',
         amount: {
