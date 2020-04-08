@@ -33,22 +33,27 @@ function buildPaymentRequest(url) {
     return request;
   }
   
-  let request;
+  let request = null;
 
-  // document.getElementsByName("price")[0].addEventListener('change', doThing);
+  document.getElementsByName("price")[0].addEventListener('change', doThing);
+
+function doThing() {
+    var amount = document.getElementById("inputPrice").value;
+    request = buildPaymentRequest(amount);
+}
 
   function onProcessClicked() {
     
-    var amount = document.getElementById("inputPrice").value;
-    var payload = {
-       "merchantId":"M2306160483220675579140",
-       "transactionId":"TX" + Date.now(),
-       "merchantUserId":"U123456789",
-       "amount":amount,
-       "paymentScope": "MSITE_INTENT"
-    },
-    requestValue = btoa(JSON.stringify(payload)),
-    xVerifyCode = sha256(requestValue + "/v4/debit8289e078-be0b-484d-ae60-052f117f8deb");
+//     var amount = document.getElementById("inputPrice").value;
+//     var payload = {
+//        "merchantId":"M2306160483220675579140",
+//        "transactionId":"TX" + Date.now(),
+//        "merchantUserId":"U123456789",
+//        "amount":amount,
+//        "paymentScope": "MSITE_INTENT"
+//     },
+//     requestValue = btoa(JSON.stringify(payload)),
+//     xVerifyCode = sha256(requestValue + "/v4/debit8289e078-be0b-484d-ae60-052f117f8deb");
     // sha256(requestValue).then(obj =>{
     //   console.log("here value is" + obj.hashHex + "###1");
 
@@ -64,8 +69,8 @@ function buildPaymentRequest(url) {
 //                // var t1 = JSON.parse(this.response);
 //                var result = JSON.parse(this.response);
 //                info(result.data.redirectURL);
-               request = null;
-                request = buildPaymentRequest(amount);
+//                request = null;
+//                 request = buildPaymentRequest(amount);
 //       request = buildPaymentRequest(result.data.redirectURL);
                request.canMakePayment().then(function(result) {
                   if(result){
