@@ -41,13 +41,14 @@ function buildPaymentRequest(url) {
   }
   
   let request = null;
+request = buildPaymentRequest();
 
-  document.getElementsByName("price")[0].addEventListener('change', doThing);
+//   document.getElementsByName("price")[0].addEventListener('change', doThing);
 
-function doThing() {
-    var amount = document.getElementById("inputPrice").value;
-    request = buildPaymentRequest(amount);
-}
+// function doThing() {
+//     var amount = document.getElementById("inputPrice").value;
+//     request = buildPaymentRequest(amount);
+// }
 
   function onProcessClicked() {
     
