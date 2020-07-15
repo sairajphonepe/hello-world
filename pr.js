@@ -16,7 +16,7 @@ function buildPaymentRequest(url) {
 //     }];
     
     const supportedInstruments = [{
-        supportedMethods: "https://mercury-stg.phonepe.com/transact/pay",
+        supportedMethods: "https://mercury.phonepe.com/transact/pay",
         data: {
             url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
         }
@@ -217,40 +217,6 @@ request = buildPaymentRequest();
    * Handles the response from PaymentRequest.show().
    */
   function handlePaymentResponse(response) {
-      
-//       if(response && response.details && response.details.result && response.details.result.indexOf('Status=Success')){
-//           var result = response.details.result;
-//           var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-//           var txnId = responseObj.txnRef;
-//           var xhttp = new XMLHttpRequest(),
-//             url = "./Proxy.jsp?mId=M2306160483220675579140&txnId=" + txnId;
-//             xhttp.onreadystatechange = function() {
-//                 if (this.readyState == 4 && this.status == 200) {
-//                     var myData = JSON.parse(this.response);
-// //                     console.log("Here transaction status after the fetch api call is " + myData.data.responseCode);
-//                     response.complete("success");
-//                 } 
-//             };
-//             xhttp.open("GET", url, true);
-//             xhttp.send();
-
-//       }
-      
-//       var fetchOptions = {
-//             method: 'POST',
-//             credentials: 'include',
-//             body: JSON.stringify(response)
-//           };
-//           var serverPaymentRequest = new Request('secure/payment/endpoint');
-//           fetch(serverPaymentRequest, fetchOptions).then( response1 => {
-// //             if (response1.status < 400) {
-//               response.complete("success");
-// //             } else {
-// //               response.complete("fail");
-// //             };
-//           }).catch( reason => {
-//             response.complete("fail");
-//           });
       response.complete('success')
         .then(function() {
           done('This is a demo website. No payment will be processed.', response);
@@ -273,12 +239,16 @@ request = buildPaymentRequest();
     try {
 //         if (request.canMakePayment) {
         // request.canMakePayment().then(canPay => {
-            request.show()
-                .then(handlePaymentResponse)
-                .catch(function(err) {
-                  error(err);
-                  request = buildPaymentRequest();
-                });
+//             request.show()
+//                 .then(handlePaymentResponse)
+//                 .catch(function(err) {
+//                   error(err);
+//                   request = buildPaymentRequest();
+//                 });
+        
+        request.show()
+.then(response => response.complete("success"))
+.catch(err => console.log("Error handling payment request: " + err));
 //           info(result ? 'Can make payment' : 'Cannot make payment');
         // }).catch(function(err) {
         //   error(err);
