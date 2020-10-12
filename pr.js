@@ -263,20 +263,20 @@ request = buildPaymentRequest();
 // .then(response => response.complete("success"))
 // .catch(err => console.log("Error handling payment request: " + err));
         
-        request.canMakePayment().then(function(result) {
-                  if(result){
-                    console.log("We are here in canMake payment handler");
+//         request.canMakePayment().then(function(result) {
+//                   if(result){
+//                     console.log("We are here in canMake payment handler");
                       request.show()
                         .then(response => response.complete("success"))
                         .catch(err => console.log("Error handling payment request: " + err));
 //                     document.getElementById("payByPhonepeButton").removeAttribute("class");
-                  } else {
-                    console.log("We are in else part of can make payment handler");
-                  }
-                  // info(result ? 'Can make payment' : 'Cannot make payment');
-                }).catch(function(err) {
-                  error(err);
-                });
+//                   } else {
+//                     console.log("We are in else part of can make payment handler");
+//                   }
+//                   // info(result ? 'Can make payment' : 'Cannot make payment');
+//                 }).catch(function(err) {
+//                   error(err);
+//                 });
 //           info(result ? 'Can make payment' : 'Cannot make payment');
         // }).catch(function(err) {
         //   error(err);
