@@ -93,9 +93,9 @@ request = buildPaymentRequest();
 //                request = null;
 //                 request = buildPaymentRequest(amount);
 //       request = buildPaymentRequest(result.data.redirectURL);
-               request.canMakePayment().then(function(result) {
-                  if(result){
-                    console.log("We are here in canMake payment handler");
+//                request.canMakePayment().then(function(result) {
+//                   if(result){
+//                     console.log("We are here in canMake payment handler");
                       request.show()
                 .then(handlePaymentResponse)
                 .catch(function(err) {
@@ -103,13 +103,13 @@ request = buildPaymentRequest();
                   request = buildPaymentRequest();
                 });
 //                     document.getElementById("payByPhonepeButton").removeAttribute("class");
-                  } else {
-                    console.log("We are in else part of can make payment handler");
-                  }
-                  // info(result ? 'Can make payment' : 'Cannot make payment');
-                }).catch(function(err) {
-                  error(err);
-                });
+//                   } else {
+//                     console.log("We are in else part of can make payment handler");
+//                   }
+//                   // info(result ? 'Can make payment' : 'Cannot make payment');
+//                 }).catch(function(err) {
+//                   error(err);
+//                 });
                // var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
                // console.log("we are here in on ready state change handler");
 //             }
