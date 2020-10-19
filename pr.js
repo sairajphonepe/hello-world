@@ -62,7 +62,9 @@ request = buildPaymentRequest();
 //     var amount = document.getElementById("inputPrice").value;
 //     request = buildPaymentRequest(amount);
 // }
-
+  function onNewSupportedMethod(){
+      request = buildPaymentRequest();
+  }
   function onProcessClicked() {
     
 //     var amount = document.getElementById("inputPrice").value;
