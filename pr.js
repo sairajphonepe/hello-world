@@ -17,7 +17,7 @@ function buildPaymentRequest(url) {
     
     const supportedInstruments = [
      {
-      supportedMethods: ['https://tez.google.com/pay'],
+      supportedMethods: [document.getElementById("inputSuportedMethod").value],     //['https://tez.google.com/pay'],
       data: {
         pa: 'PRACT0@ybl',
         pn: 'PRACT',
