@@ -1,4 +1,4 @@
-let mId;
+let mId, canMakePaymentResult = false;
 /**
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
@@ -27,13 +27,6 @@ function buildPaymentRequest(url) {
         tn: 'Payment',
       },
     }];
-    
-//     const supportedInstruments = [{
-//         supportedMethods: "https://tez.google.com/pay",
-//         data: {
-//             url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
-//         }
-//     }];
   
     const details = {
       total: {
@@ -64,6 +57,11 @@ request = buildPaymentRequest();
 // }
   function onNewSupportedMethod(){
       request = buildPaymentRequest();
+      request.canMakePayment().then(function(result) {
+          console.log("here canMakePayment result= ", result); 
+      }).catch(function(err) {
+          console.log("here canMakePayment error handler and error= ", err); 
+      });
   }
   function onProcessClicked() {
     
@@ -104,29 +102,6 @@ request = buildPaymentRequest();
                   error(err);
                   request = buildPaymentRequest();
                 });
-//                     document.getElementById("payByPhonepeButton").removeAttribute("class");
-//                   } else {
-//                     console.log("We are in else part of can make payment handler");
-//                   }
-//                   // info(result ? 'Can make payment' : 'Cannot make payment');
-//                 }).catch(function(err) {
-//                   error(err);
-//                 });
-               // var responseObj = JSON.parse('{"' + decodeURI(result).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-               // console.log("we are here in on ready state change handler");
-//             }
-//         };
-
-//        xhttp.open("POST", url, true);
-//        xhttp.setRequestHeader("Content-type", "application/json");
-//        xhttp.send(JSON.stringify(tagsObj));
-
-
-    // });
-
-
-    
-
   }
 
 
@@ -252,44 +227,10 @@ request = buildPaymentRequest();
     }
   
     try {
-//         if (request.canMakePayment) {
-        // request.canMakePayment().then(canPay => {
-//             request.show()
-//                 .then(handlePaymentResponse)
-//                 .catch(function(err) {
-//                   error(err);
-//                   request = buildPaymentRequest();
-//                 });
-        
-//         request.show()
-// .then(response => response.complete("success"))
-// .catch(err => console.log("Error handling payment request: " + err));
-        
-//         request.canMakePayment().then(function(result) {
-//                   if(result){
-//                     console.log("We are here in canMake payment handler");
                       request.show()
                         .then(response => response.complete("success"))
                         .catch(err => console.log("Error handling payment request: " + err));
-//                     document.getElementById("payByPhonepeButton").removeAttribute("class");
-//                   } else {
-//                     console.log("We are in else part of can make payment handler");
-//                   }
-//                   // info(result ? 'Can make payment' : 'Cannot make payment');
-//                 }).catch(function(err) {
-//                   error(err);
-//                 });
-//           info(result ? 'Can make payment' : 'Cannot make payment');
-        // }).catch(function(err) {
-        //   error(err);
-        // });
-//       }
-//       request.show()
-//         .then(handlePaymentResponse)
-//         .catch(function(err) {
-//           error(err);
-//           request = buildPaymentRequest();
-//         });
+
     } catch (e) {
       error('Developer mistake: \'' + e.message + '\'');
       request = buildPaymentRequest();
