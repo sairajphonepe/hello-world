@@ -15,7 +15,7 @@ function onPayClick() {
       failure();
     }
 
-    if (!isPaymentRequestSupported) {
+    if (!window.PaymentRequest) {
       // paymentRequest not supported for this browser.
       console.log("Here paymentRequest not supported");
       return failure();
