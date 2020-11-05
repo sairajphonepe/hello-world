@@ -9,11 +9,11 @@ function onPayClick() {
       clearTimeout(paymentRequestTimeout);
     }
 
-    const catchHandler = () => {
-      console.log("In catch handler");
-      flush();
-      failure();
-    }
+//     const catchHandler = () => {
+//       console.log("In catch handler");
+//       flush();
+//       failure();
+//     }
 
     if (!window.PaymentRequest) {
       // paymentRequest not supported for this browser.
@@ -21,15 +21,15 @@ function onPayClick() {
       return failure();
     }
 
-    const success = result => {
-        flush();
-        if (!result) {
-          return failure();
-        }
-        //In success and result is true.
-        console.log("In success and result", result);
-    },
-    transactionDetails = {
+//     const success = result => {
+//         flush();
+//         if (!result) {
+//           return failure();
+//         }
+//         //In success and result is true.
+//         console.log("In success and result", result);
+//     },
+    const transactionDetails = {
       total: {
         label: 'Total',
         amount: {
@@ -54,11 +54,33 @@ const hasEnrolledInstrument = typeof paymentRequest.hasEnrolledInstrument === 'f
 
 if (hasEnrolledInstrument) {
   paymentRequest.hasEnrolledInstrument()
-    .then(success)
-    .catch(catchHandler);
+    .then(result => {
+        flush();
+        if (!result) {
+          return failure();
+        }
+        //In success and result is true.
+        console.log("In success and result", result);
+    })
+    .catch(() => {
+      console.log("In catch handler");
+      flush();
+      failure();
+    });
 } else {
   paymentRequest.canMakePayment()
-   .then(success)
-   .catch(catchHandler);
+   .then(result => {
+        flush();
+        if (!result) {
+          return failure();
+        }
+        //In success and result is true.
+        console.log("In success and result", result);
+    })
+   .catch(() => {
+      console.log("In catch handler");
+      flush();
+      failure();
+    });
   }
 }
