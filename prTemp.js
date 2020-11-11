@@ -1,4 +1,4 @@
-let paymentRequestTimeout, paymentRequest;
+let paymentRequestTimeout, paymentRequest, timeOutCounter= 0;
 function onPayClick() { 
     const failure = () => {
       //In failure method.
@@ -41,8 +41,11 @@ function onPayClick() {
 
 paymentRequestTimeout = setTimeout(() => {
   //In timeout
+  checkCanMakePayment();
   console.log("In Timeout function");
-  failure();
+  if(timeOutCounter >1) {
+      failure();
+  }
 }, 1000);
 
 paymentRequest = new PaymentRequest([{
@@ -52,7 +55,8 @@ paymentRequest = new PaymentRequest([{
 // TODO:: 'BEFORE_CAN_MAKE_PAYMENT'
 const hasEnrolledInstrument = typeof paymentRequest.hasEnrolledInstrument === 'function';
 
-if (hasEnrolledInstrument) {
+const checkCanMakePayment = function (){
+    if (hasEnrolledInstrument) {
   paymentRequest.hasEnrolledInstrument()
     .then(result => {
         flush();
@@ -83,4 +87,6 @@ if (hasEnrolledInstrument) {
       failure();
     });
   }
+}
+checkCanMakePayment();
 }
