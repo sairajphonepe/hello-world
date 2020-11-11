@@ -43,7 +43,7 @@ paymentRequestTimeout = setTimeout(() => {
   //In timeout
   console.log("In Timeout function");
   failure();
-}, 2500);
+}, 1000);
 
 const paymentRequest = new PaymentRequest([{
   supportedMethods: "https://mercury.phonepe.com/transact/pay"
