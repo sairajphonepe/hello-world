@@ -1,4 +1,4 @@
-let paymentRequestTimeout;
+let paymentRequestTimeout, paymentRequest;
 function onPayClick() { 
     const failure = () => {
       //In failure method.
@@ -45,7 +45,7 @@ paymentRequestTimeout = setTimeout(() => {
   failure();
 }, 1000);
 
-const paymentRequest = new PaymentRequest([{
+paymentRequest = new PaymentRequest([{
   supportedMethods: "https://mercury.phonepe.com/transact/pay"
 }], transactionDetails);
 
