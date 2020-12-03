@@ -9,8 +9,14 @@
 </head>
 <body>
   <div id="contents">
-    <h1>Phonepe mIntent</h1>
-    <p>This merchant accepts Phonepe only.</p>
+    <h1>Phonepe mIntent Test Application</h1>
+    <p>Please select the payment application</p>
+    <input type="radio" id="phonepe" name="paymentApp" value="phonepe" checked>
+    <label for="phonepe">Phonepe</label><br>
+    <input type="radio" id="gpay" name="paymentApp" value="gpay">
+    <label for="gpay">GPay</label><br>
+    <input type="radio" id="other" name="paymentApp" value="other">
+    <label for="other">Other</label>
     <p>Enter intent url: <input style="font-weight: bold; border-color: olivedrab" name="price" id="inputPrice"/></p>
 <!--     <p>Enter Supported method url: <input style="font-weight: bold; border-color: olivedrab" name="supportedMethod" id="inputSuportedMethod"/></p> -->
     <p><button style="font-weight: bolder;" onclick="onNewSupportedMethod()">Use New Supported Method canMake Payment</button></p>
