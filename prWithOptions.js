@@ -1,42 +1,44 @@
 let paymentRequestTimeout, paymentRequest, timeOutCounter= 0;
 function changeHandlerOther(evt) {
-  console.log("We are here in changeHandlerOther", evt);
+  if(document.getElementById("phonepe").checked == true) {
+    document.getElementById("otherPaymentAppInput").className = "hiddenElement";
+  }
+  if(document.getElementById("gpay").checked == true) {
+    document.getElementById("otherPaymentAppInput").className = "hiddenElement";
+//     createPaymentRequest(true, "gpay");
+  }
+  if(document.getElementById("other").checked == true) {
+    document.getElementById("otherPaymentAppInput").className = "";
+  }
 }
 
 function onProceedSelectedApp(evt) {
+  if(document.getElementById("other").checked == true) {
+    if(document.getElementById("otherPaymentAppPaymentUrl").value == "" || document.getElementById("otherPaymentAppPaymentUrl").value == " "){
+      alert("Please enter the supportedMethod to create Payment Request object");
+    } else {
+      createPaymentRequest(false, document.getElementById("otherPaymentAppPaymentUrl").value);
+    }
+    return;
+  }
+  if(document.getElementById("phonepe").checked == true) {
+    createPaymentRequest(true, "phonepe");
+    return;
+  }
+  if(document.getElementById("gpay").checked == true) {
+    createPaymentRequest(true, "gpay");
+    return;
+  } 
   console.log("We are here in onProceedSelectedApp", evt);
 }
-function onPayClick() { 
-    const failure = () => {
-      //In failure method.
-      console.log("In failure function");
-    }
-    const flush = () => {
-      console.log("In flush function");
-      clearTimeout(paymentRequestTimeout);
-    }
 
-//     const catchHandler = () => {
-//       console.log("In catch handler");
-//       flush();
-//       failure();
-//     }
-
-    if (!window.PaymentRequest) {
+function createPaymentRequest(bDirectApp, sAppUrl){
+  if (!window.PaymentRequest) {
       // paymentRequest not supported for this browser.
-      console.log("Here paymentRequest not supported");
-      return failure();
+      info("Here paymentRequest not supported");
+      return;
     }
-
-//     const success = result => {
-//         flush();
-//         if (!result) {
-//           return failure();
-//         }
-//         //In success and result is true.
-//         console.log("In success and result", result);
-//     },
-    const transactionDetails = {
+  const transactionDetails = {
       total: {
         label: 'Total',
         amount: {
@@ -45,55 +47,65 @@ function onPayClick() {
         }
       }
     };
-
-paymentRequestTimeout = setTimeout(() => {
-  //In timeout
-  checkCanMakePayment();
-  console.log("In Timeout function");
-  if(timeOutCounter >1) {
-      failure();
+  var supportedInstruments;
+  
+  if(bDirectApp) {
+    if(sAppUrl == "phonepe"){
+      supportedInstruments = [{
+          supportedMethods: ["https://mercury.phonepe.com/transact/pay"],
+          data: {
+              url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
+          }
+      }];
+    }
+    if (sAppUrl == "gpay"){
+      supportedInstruments = [{
+          supportedMethods: ["https://tez.google.com/pay"],
+          data: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
+          
+      }];
+    }
+  } else {
+    supportedInstruments = [{
+          supportedMethods: [sAppUrl],
+          data: {
+            url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
+          }
+      }];
   }
-}, 1000);
-
-paymentRequest = new PaymentRequest([{
-  supportedMethods: "https://mercury.phonepe.com/transact/pay"
-}], transactionDetails);
-
-// TODO:: 'BEFORE_CAN_MAKE_PAYMENT'
-const hasEnrolledInstrument = typeof paymentRequest.hasEnrolledInstrument === 'function';
-
-const checkCanMakePayment = function (){
-    if (hasEnrolledInstrument) {
-  paymentRequest.hasEnrolledInstrument()
-    .then(result => {
-        flush();
-        if (!result) {
-          return failure();
-        }
-        //In success and result is true.
-        console.log("In success and result", result);
-    })
-    .catch(() => {
-      console.log("In catch handler");
-      flush();
-      failure();
-    });
-} else {
-  paymentRequest.canMakePayment()
-   .then(result => {
-        flush();
-        if (!result) {
-          return failure();
-        }
-        //In success and result is true.
-        console.log("In success and result", result);
-    })
-   .catch(() => {
-      console.log("In catch handler");
-      flush();
-      failure();
-    });
-  }
+  paymentRequest = new PaymentRequest(supportedInstruments, details);
+  paymentRequest.canMakePayment().then(function(result) {
+          info("here canMakePayment result= ", result); 
+      }).catch(function(err) {
+          info("here canMakePayment error handler and error= ", err); 
+      });
 }
-checkCanMakePayment();
+
+function info(msg) {
+  let element = document.createElement('pre');
+  element.innerHTML = msg;
+  element.className = 'info';
+  document.getElementById('msg').appendChild(element);
+}
+
+function handlePaymentResponse(response) {
+      response.complete('success')
+        .then(function() {
+          info('This is a demo website. No payment will be processed.', response);
+        })
+        .catch(function(err) {
+          info(err);
+        });
+ }
+
+function onPayClick() { 
+    
+  
+  paymentRequest.show()
+                .then(handlePaymentResponse)
+                .catch(function(err) {
+                  info(err);
+                });
+
+
 }
