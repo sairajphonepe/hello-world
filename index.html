@@ -11,16 +11,16 @@
   <div id="contents">
     <h1>Phonepe mIntent Test Application</h1>
     <p>Please select the payment application</p>
-    <input type="radio" id="phonepe" name="paymentApp" value="phonepe" onclick="changeHandlerOther(evt)" checked>
+    <input type="radio" id="phonepe" name="paymentApp" value="phonepe" onclick="changeHandlerOther()" checked>
     <label for="phonepe">Phonepe</label><br>
-    <input type="radio" id="gpay" name="paymentApp" value="gpay" onclick="changeHandlerOther(evt)">
+    <input type="radio" id="gpay" name="paymentApp" value="gpay" onclick="changeHandlerOther()">
     <label for="gpay">GPay</label><br>
-    <input type="radio" id="other" name="paymentApp" value="other" onclick="changeHandlerOther(evt)">
+    <input type="radio" id="other" name="paymentApp" value="other" onclick="changeHandlerOther()">
     <label for="other">Other</label>
     <div id="otherPaymentAppInput" class="hiddenElement">
-    <p>Enter intent url: <input style="font-weight: bold; border-color: olivedrab" name="price" id="inputPrice"/></p>
+    <p>Enter intent url: <input style="font-weight: bold; border-color: olivedrab" name="paymentUrl" id="otherPaymentAppPaymentUrl"/></p>
     </div>
-    <p><button style="font-weight: bolder;" onclick="onProceedSelectedApp(evt)">Proceed</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedApp()">Proceed</button></p>
 <!--     <p>Enter Supported method url: <input style="font-weight: bold; border-color: olivedrab" name="supportedMethod" id="inputSuportedMethod"/></p> -->
 <!--     <p><button style="font-weight: bolder;" onclick="onNewSupportedMethod()">Use New Supported Method canMake Payment</button></p> -->
 <!--     <p><button style="font-weight: bolder;" onclick="onPayClick()">Initiate show()</button></p> -->
