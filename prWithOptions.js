@@ -73,7 +73,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
           }
       }];
   }
-  paymentRequest = new PaymentRequest(supportedInstruments, details);
+  paymentRequest = new PaymentRequest(supportedInstruments, transactionDetails);
   paymentRequest.canMakePayment().then(function(result) {
           info("here canMakePayment result= ", result); 
       }).catch(function(err) {
