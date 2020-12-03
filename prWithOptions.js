@@ -75,9 +75,9 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   }
   paymentRequest = new PaymentRequest(supportedInstruments, transactionDetails);
   paymentRequest.canMakePayment().then(function(result) {
-          info("here canMakePayment result= ", result); 
+          info("here canMakePayment result= " + result); 
       }).catch(function(err) {
-          info("here canMakePayment error handler and error= ", err); 
+          info("here canMakePayment error handler and error= " + err); 
       });
 }
 
@@ -91,7 +91,7 @@ function info(msg) {
 function handlePaymentResponse(response) {
       response.complete('success')
         .then(function() {
-          info('This is a demo website. No payment will be processed.', response);
+          info('This is a demo website. No payment will be processed. ' + response);
         })
         .catch(function(err) {
           info(err);
