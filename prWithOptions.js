@@ -13,6 +13,7 @@ function changeHandlerOther(evt) {
 }
 
 function reset(){
+  document.getElementById('msg').innerHTML = ""; 
   if(document.getElementById("other").checked == true) {
     if(document.getElementById("otherPaymentAppPaymentUrl").value == "" || document.getElementById("otherPaymentAppPaymentUrl").value == " "){
       alert("Please enter the supportedMethod to create Payment Request object");
