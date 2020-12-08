@@ -12,7 +12,7 @@ function changeHandlerOther(evt) {
   }
 }
 
-function onProceedSelectedApp(evt) {
+function reset(){
   if(document.getElementById("other").checked == true) {
     if(document.getElementById("otherPaymentAppPaymentUrl").value == "" || document.getElementById("otherPaymentAppPaymentUrl").value == " "){
       alert("Please enter the supportedMethod to create Payment Request object");
@@ -28,8 +28,28 @@ function onProceedSelectedApp(evt) {
   if(document.getElementById("gpay").checked == true) {
     createPaymentRequest(true, "gpay");
     return;
-  } 
-  console.log("We are here in onProceedSelectedApp", evt);
+  }
+}
+
+
+function onProceedSelectedAppHasEnrolledInstrument(evt) {
+  reset();
+   paymentRequest && paymentRequest.hasEnrolledInstrument().then(function(result) {
+          info("here hasEnrolledInstrument result= " + result); 
+      }).catch(function(err) {
+          info("here hasEnrolledInstrument error handler and error= " + err); 
+      });
+  console.log("We are here in onProceedSelectedApp hasEnrolledInstrument", evt);
+}
+
+function onProceedSelectedAppCanMakePayment(evt) {
+  reset();
+   paymentRequest && paymentRequest.canMakePayment().then(function(result) {
+          info("here canMakePayment result= " + result); 
+      }).catch(function(err) {
+          info("here canMakePayment error handler and error= " + err); 
+      });
+  console.log("We are here in onProceedSelectedApp canMakePayment", evt);
 }
 
 function createPaymentRequest(bDirectApp, sAppUrl){
@@ -80,11 +100,6 @@ function createPaymentRequest(bDirectApp, sAppUrl){
       }];
   }
   paymentRequest = new PaymentRequest(supportedInstruments, transactionDetails);
-  paymentRequest.canMakePayment().then(function(result) {
-          info("here canMakePayment result= " + result); 
-      }).catch(function(err) {
-          info("here canMakePayment error handler and error= " + err); 
-      });
 }
 
 function info(msg) {
