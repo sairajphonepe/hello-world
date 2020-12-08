@@ -32,9 +32,11 @@ function reset(){
   }
 }
 
+function onPageLoad() {
+  reset();
+}
 
 function onProceedSelectedAppHasEnrolledInstrument(evt) {
-  reset();
    paymentRequest && paymentRequest.hasEnrolledInstrument().then(function(result) {
           info("here hasEnrolledInstrument result= " + result); 
       }).catch(function(err) {
@@ -44,7 +46,6 @@ function onProceedSelectedAppHasEnrolledInstrument(evt) {
 }
 
 function onProceedSelectedAppCanMakePayment(evt) {
-  reset();
    paymentRequest && paymentRequest.canMakePayment().then(function(result) {
           info("here canMakePayment result= " + result); 
       }).catch(function(err) {
