@@ -1,17 +1,4 @@
 let paymentRequestTimeout, paymentRequest, timeOutCounter= 0;
-function changeHandlerOther(evt) {
-  if(document.getElementById("phonepe").checked == true) {
-    document.getElementById("otherPaymentAppInput").className = "hiddenElement";
-  }
-  if(document.getElementById("gpay").checked == true) {
-    document.getElementById("otherPaymentAppInput").className = "hiddenElement";
-//     createPaymentRequest(true, "gpay");
-  }
-  if(document.getElementById("other").checked == true) {
-    document.getElementById("otherPaymentAppInput").className = "";
-  }
-}
-
 function reset(){
   document.getElementById('msg').innerHTML = ""; 
   if(document.getElementById("other").checked == true) {
@@ -30,6 +17,20 @@ function reset(){
     createPaymentRequest(true, "gpay");
     return;
   }
+}
+
+function changeHandlerOther(evt) {
+  if(document.getElementById("phonepe").checked == true) {
+    document.getElementById("otherPaymentAppInput").className = "hiddenElement";
+  }
+  if(document.getElementById("gpay").checked == true) {
+    document.getElementById("otherPaymentAppInput").className = "hiddenElement";
+//     createPaymentRequest(true, "gpay");
+  }
+  if(document.getElementById("other").checked == true) {
+    document.getElementById("otherPaymentAppInput").className = "";
+  }
+  reset();
 }
 
 function onPageLoad() {
