@@ -12,7 +12,7 @@
         const callback = (response) => {
           console.log(response);
         };
-        PhonePe.transact(txtTransactUrl.value, callback);
+        PhonePe.transact({tokenUrl: txtTransactUrl.value, callback});
       }
     </script>
   </head>
