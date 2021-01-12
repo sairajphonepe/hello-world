@@ -7,6 +7,7 @@
     <script src="https://mercury-stg.phonepe.com/linchpin/checkout/0.4.1/phonepe.js" defer></script>
     <script>
       function performPayment(e) {
+        e.preventDefault();
         console.log("formSubmit", e);
         const txtTransactUrl = document.getElementById("txtTransactUrl");
         const callback = (response) => {
