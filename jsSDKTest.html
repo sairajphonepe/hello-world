@@ -7,14 +7,13 @@
     <script src="https://mercury-stg.phonepe.com/transact/checkout.js" defer></script>
     <script>
       function performPayment(e) {
-       
+        e.preventDefault();
         console.log("formSubmit", e);
         const txtTransactUrl = document.getElementById("txtTransactUrl");
         const callback = (response) => {
           console.log(response);
         };
         window.PhonePe.transact({tokenUrl: txtTransactUrl.value, callback});
-         e.preventDefault();
       }
     </script>
   </head>
