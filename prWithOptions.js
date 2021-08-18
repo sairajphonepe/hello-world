@@ -3,7 +3,7 @@ const supportedInstrumentsPhonepe = [{
           supportedMethods: ["https://mercury.phonepe.com/transact/pay"],
           data: {
               url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00",
-              mobileNumber: "9890908888"
+              mobileNumber: "8308171711"
           }
       }],
       supportedInstrumentGPay = [{
@@ -118,7 +118,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
           supportedMethods: ["https://mercury-stg.phonepe.com/transact/pay"],
           data: {
               url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00",
-                    mobileNumber: "9890908888"
+                    mobileNumber: "8308171711"
           }
       }], transactionDetails);
 //   paymentRequestOther  = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
