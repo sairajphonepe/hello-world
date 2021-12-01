@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <title>Demo</title>
+</head>
+
+<body>
+    <div class="modal notify fade" id="notify-modal" tabindex="-1" role="dialog" aria-labelledby="notify-content"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="notify-header">
+                    <h7 class="modal-title" id="notify-content"></h7>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h4 class="text-center my-4">Payment</h4>
+        <div class="card">
+            <div class="card-body mx-2 my-2">
+                <form id="payment">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input1">Merchant ID</label>
+                                <input type="text" class="form-control" id="input1" placeholder="Merchant Id"
+                                    value="M2306160483220675579140">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input2">Merchant Transaction id</label>
+                                <input type="text" class="form-control" id="input2"
+                                    placeholder="Merchant Transaction Id" value="TX1623849861085">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input3">Amount(in paise)</label>
+                                <input type="number" class="form-control" id="input3" placeholder="Amount" value="100">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input4">Mobile Number</label>
+                                <input type="number" class="form-control" id="input4" placeholder="Mobile Number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input5">Merchant user ID</label>
+                                <input type="text" class="form-control" id="input5" placeholder="Merchant user Id">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input6">User auth token</label>
+                                <input type="text" class="form-control" id="input6" placeholder="User auth token">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input7">Callback URL</label>
+                                <input type="text" class="form-control" id="input7" placeholder="Callback URL">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input8">Call Mode</label>
+                                <input type="text" class="form-control" id="input8" placeholder="Call Mode"
+                                    value="POST">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-3">Pay Via Web App</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="userConsent" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Do you want to cancel payment request??
+                </div>
+                <div class="modal-footer">
+                    <button id="no" type="button" class="btn btn-success">No</button>
+                    <button id="yes" type="button" class="btn btn-danger">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="/lib/js/jquery.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <script src="/lib/js/pr.js"></script>
+</body>
+
+</html>
