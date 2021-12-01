@@ -121,6 +121,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
                     mobileNumber: "8308171711"
           }
       }], transactionDetails);
+  console.log("PaymentRequest created here ", paymentRequestPhonepeStage);
 //   paymentRequestOther  = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
 }
 
