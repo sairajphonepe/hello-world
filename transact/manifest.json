@@ -39,7 +39,7 @@
   "theme_color": "white",
   "serviceworker": {
     "src": "sw.js",
-    "scope": "/transact/",
+    "scope": "/hello-world/transact/",
     "use_cache": "false"
   }
 }
