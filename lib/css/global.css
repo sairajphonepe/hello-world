@@ -1,0 +1,131 @@
+.icon {
+    max-width: 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.col-xl-1,
+.col-xl-10,
+.col-md-1,
+.col-md-10,
+.col-lg-1,
+.col-lg-10,
+.col-sm-1,
+.col-sm-10,
+.row {
+    padding: 0 0 !important;
+}
+
+.list-group-item,
+.card {
+    background: #fff !important;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    border-radius: 6px !important;
+}
+
+.hrow {
+    background: #fff !important;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    border-radius: 6px !important;
+}
+
+.arrow {
+    border: solid rgba(88, 77, 77, 0.87);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.fl-left {
+    float: left !important;
+}
+
+.padding {
+    margin-top: 5%;
+}
+
+#card,
+#upi,
+#wallet {
+    display: none;
+}
+
+.mro-5 {
+    margin: 0% 10% !important;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+p {
+    margin: 0 0 !important;
+}
+
+.notify .modal-dialog {
+    text-align: center;
+    min-width: 10% !important;
+}
+
+.notify .modal-header {
+    color: #fff;
+    padding: 0.5rem !important;
+}
+
+.c-mr {
+    margin: 25% 25%;
+}
+
+@media only screen and (max-width:800px) {
+    .c-mr {
+        margin: 15% 15%;
+    }
+
+    * {
+        font-size: 0.9rem !important;
+    }
+
+    .form-group {
+        margin-bottom: 0.7rem !important;
+    }
+
+    .col-sm-6 {
+        width: 50% !important;
+    }
+
+    .col-sm-3 {
+        width: 25% !important;
+    }
+
+    .col-sm-2 {
+        width: 20% !important;
+    }
+
+    .col-sm-4 {
+        width: 33% !important;
+    }
+}
+
+#wallet-otp-payment,
+#wallet-pay {
+    display: none;
+}
+
+@media only screen and (max-width:500px) {
+    .mro-5 {
+        margin: 0% 0% !important;
+    }
+
+    .c-mr {
+        margin: 8% 8%;
+    }
+}

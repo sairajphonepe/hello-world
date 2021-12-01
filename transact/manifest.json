@@ -1,0 +1,45 @@
+{
+  "name": "Payment App",
+  "short_name": "Payment App",
+  "icons": [{
+      "src": "https://imgstatic.phonepe.com/images/merchants/128/128/PHONEPE.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "https://imgstatic.phonepe.com/images/merchants/144/144/PHONEPE.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "https://imgstatic.phonepe.com/images/merchants/152/152/PHONEPE.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "https://imgstatic.phonepe.com/images/merchants/192/192/PHONEPE.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://imgstatic.phonepe.com/images/merchants/256/256/PHONEPE.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "https://imgstatic.phonepe.com/images/merchants/512/512/PHONEPE.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
+  "serviceworker": {
+    "src": "sw.js",
+    "scope": "/transact/",
+    "use_cache": "false"
+  }
+}

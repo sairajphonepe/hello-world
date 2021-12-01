@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+<!--     <script src="https://mercury.phonepe.com/linchpin/checkout/1.0.0/phonepe.js"></script> -->
+    <script src="https://mercury-stg.phonepe.com/transact/phonepe.js" defer></script>
+    <script>
+      function performPayment(e) {
+        e.preventDefault();
+        console.log("formSubmit", e);
+        const txtTransactUrl = document.getElementById("txtTransactUrl");
+        const callback = (response) => {
+          console.log(response);
+        };
+        window.PhonePe.transact({tokenUrl: txtTransactUrl.value, callback});
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="app">
+      <form onsubmit="performPayment(event)">
+        <input type="text" id="txtTransactUrl" placeholder="Transaction URL" />
+        <button type="submit">Checkout</button>
+      </form>
+    </div>
+  </body>
+</html>
