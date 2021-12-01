@@ -1,306 +1,53 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Payment App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="https://imgstatic.phonepe.com/images/merchants/152/152/PHONEPE.png">
-    <meta name="theme-color" content="white" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Payment App">
-    <meta name="msapplication-TileImage" content="https://imgstatic.phonepe.com/images/merchants/144/144/PHONEPE.png">
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="white" />
-    <script src="https://use.fontawesome.com/21e8bfa7b3.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link rel="stylesheet" href="../lib/css/global.css">
-
-
-<body>
-    <div class="container" id="main">
-        <div class="card mx-5 my-3">
-            <div class="card-body px-3 py-3">
-                <p>Payment to</p>
-                <h5>Test Merchant</h5>
-                <input id="amount" type="text" class="input-lg form-control" disabled>
-            </div>
-        </div>
-        <div class="list-group mx-5 my-3">
-            <div class="row">
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4">
-                    <hr width="100%" style="color:#757575;background:#757575;">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 text-center">
-                    <h6>Card</h6>
-                </div>
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4">
-                    <hr width="100%" style="color:#757575;background:#757575;">
-                </div>
-            </div>
-            <button id="card-flow" class="list-group-item list-group-item-light">
-                <div class="mx-2 my-1">
-                    <div class="row">
-                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3 pl-2 py-1">
-                            <div class="icon">
-                                <svg viewBox="0 0 27 22" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <path
-                                        d="M2 7v13h18v-5H7V7H2zm0-2h5v10h15v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
-                                        fill="rgba(98, 172, 288, 1)"></path>
-                                    <path
-                                        d="M10.004 13.003a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2h-2zM7 0h18a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v13h18V2H7zm-.282 5.005a1 1 0 1 1 0-2h19a1 1 0 0 1 0 2h-19z"
-                                        fill="rgba(57, 100, 168, 1)"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-sm-6 col-md-10">
-                            Pay Using Card
-                        </div>
-                        <div class="col-xl-1 col-lg-1 col-sm-3 col-md-1 px-3">
-                            <div class="arrow right">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <div class="row mt-3">
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4">
-                    <hr width="100%" style="color:#757575;background:#757575;">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 text-center">
-                    <h6>Wallet</h6>
-                </div>
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4">
-                    <hr width="100%" style="color:#757575;background:#757575;">
-                </div>
-            </div>
-            <button id="wallet-flow" class="list-group-item list-group-item-light">
-                <div class="mx-2 my-1">
-                    <div class="row">
-                        <div class="col-xl-1 col-lg-1 col-sm-3 col-md-1 pl-2 py-1">
-                            <div class="icon">
-                                <svg viewBox="0 0 25 23" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M2 7v14h19v-5h2.011v-6H21V7H2zm0-2h19a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm15 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
-                                        fill="rgba(57, 100, 168, 1)"></path>
-                                    <path
-                                        d="M7.326 5L16 2.11V5h2V2.11c0-.643-.308-1.352-.83-1.728a2 2 0 0 0-1.802-.276L2 5h5.326zM15 12v4h8v-4h-8zm0-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"
-                                        fill="rgba(98, 172, 288, 1)"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-sm-6 col-md-10">
-                            Pay Using Wallet
-                        </div>
-                        <div class="col-xl-1 col-lg-1 col-sm-3 col-md-1 px-3">
-                            <div class="arrow right">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <div class="row mt-3">
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4">
-                    <hr width="100%" style="color:#757575;background:#757575;">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 text-center">
-                    <h6>UPI</h6>
-                </div>
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-4">
-                    <hr width="100%" style="color:#757575;background:#757575;">
-                </div>
-            </div>
-            <button id="upi-flow" class="list-group-item list-group-item-light">
-                <div class="mx-2 my-1">
-                    <div class="row">
-                        <div class="col-xl-1 col-lg-1 col-sm-3 col-md-1 pl-2 py-1">
-                            <div class="icon">
-                                <svg viewBox="0 0 21 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.516 20.254l9.15-8.388-6.1-8.388-1.185 6.516 1.629 2.042-2.359 1.974-1.135 6.244zM12.809.412l8 11a1 1 0 0 1-.133 1.325l-12 11c-.707.648-1.831.027-1.66-.916l1.42-7.805 3.547-3.01-1.986-5.579 1.02-5.606c.157-.865 1.274-1.12 1.792-.41z"
-                                        fill="rgba(98, 172, 288, 1)"></path>
-                                    <path
-                                        d="M5.566 3.479l-3.05 16.775 9.147-8.388-6.097-8.387zM5.809.412l7.997 11a1 1 0 0 1-.133 1.325l-11.997 11c-.706.648-1.831.027-1.66-.916l4-22C4.174-.044 5.292-.299 5.81.412z"
-                                        fill="rgba(57, 100, 168, 1)"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-sm-6 col-md-10">
-                            Pay Using UPI
-                        </div>
-                        <div class="col-xl-1 col-lg-1 col-sm-3 col-md-1 px-3">
-                            <div class="arrow right">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </button>
-        </div>
-    </div>
-
-
-    <!-- card  -->
-    <div class="container" id="card">
-        <div class="list-group mro-5">
-            <button class="back list-group-item list-group-item-light">
-                <div class="arrow left fl-left my-2">
-                </div>
-                <span class="fl-left mx-3">Card</span>
-            </button>
-        </div>
-        <div class="padding">
-            <div class="row">
-                <div class="container-fluid d-flex justify-content-center">
-                    <div class="col-sm-10 col-md-10 col-xl-8">
-                        <div class="card my-2">
-                            <div class="card-header text-center"><span>credit/debit card payment</span>
-                            </div>
-                            <div class="card-body">
-                                <form id="card-payment">
-                                    <div class="form-group"> <label for="cc-number" class="control-label">card
-                                            number</label> <input id="cc-number" type="tel"
-                                            class="input-lg form-control cc-number" autocomplete="cc-number"
-                                            placeholder="•••• •••• •••• ••••" required> </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="form-group"> <label for="cc-exp" class="control-label">card
-                                                    expiry</label> <input id="cc-exp" type="tel"
-                                                    class="input-lg form-control cc-exp" autocomplete="cc-exp"
-                                                    placeholder="•• / ••" required> </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="form-group"> <label for="cc-cvc" class="control-label">card
-                                                    cvc</label> <input id="cc-cvc" type="tel"
-                                                    class="input-lg form-control cc-cvc" autocomplete="off"
-                                                    placeholder="••••" required> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group"> <label for="numeric" class="control-label">card holder
-                                            name</label> <input type="text" class="input-lg form-control"> </div>
-                                    <button type="submit" class="btn btn-md btn-block btn-success my-2">make
-                                        payment</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- upi  -->
-    <div class="container" id="upi">
-        <div class="list-group mro-5">
-            <button class="back list-group-item list-group-item-light">
-                <div class="arrow left fl-left my-2">
-                </div>
-                <span class="fl-left mx-3">UPI</span>
-            </button>
-            <div class="padding">
-                <div class="row">
-                    <div class="container-fluid d-flex justify-content-center">
-                        <div class="col-sm-10 col-md-10 col-xl-8">
-                            <div class="card my-2">
-                                <div class="card-header text-center"><span>Upi Payment</span>
-                                </div>
-                                <div class="card-body">
-                                    <form id="upi-payment">
-                                        <div class="form-group"> <label for="upi-text" class="control-label">UPI
-                                            </label> <input id="upi-text" type="text" class="input-lg form-control"
-                                                placeholder="username@upi" required> </div>
-                                        <button type="submit" class="btn btn-md btn-block btn-success my-2">Pay</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- wallet  -->
-
-    <div class="container" id="wallet">
-        <div class="list-group mro-5">
-            <button class="back list-group-item list-group-item-light">
-                <div class="arrow left fl-left my-2">
-                </div>
-                <span class="fl-left mx-3">Wallet</span>
-            </button>
-            <div class="padding">
-                <div class="row">
-                    <div class="container-fluid d-flex justify-content-center">
-                        <div class="col-sm-10 col-md-10 col-xl-8">
-                            <div class="card my-2">
-                                <div class="card-header text-center"><span>Wallet Payment</span>
-                                </div>
-                                <div class="card-body">
-                                    <form id="wallet-payment">
-                                        <div class="form-group"> <label for="p-number" class="control-label">Login to
-                                                PhonePe
-                                            </label> <input id="p-number" type="tel" class="input-lg form-control"
-                                                placeholder="Enter Your Phone Number" required> </div>
-                                        <button type="submit" id="sub-2"
-                                            class="btn btn-md btn-block btn-success my-2">Send OTP To
-                                            Login</button>
-                                    </form>
-                                    <form id="wallet-otp-payment">
-                                        <div class="form-group" id="sub"> <label for="otp-number"
-                                                class="control-label">OTP
-                                            </label> <input id="otp-number" type="tel" class="input-lg form-control"
-                                                placeholder="Enter OTP" required> </div>
-                                        <button type="submit" id="sub-1"
-                                            class="btn btn-md btn-block btn-success my-2">Submit</button>
-                                    </form>
-                                    <form id="wallet-pay">
-                                        <button type="submit" id="sub-3"
-                                            class="btn btn-md btn-block btn-success my-2">Pay RS 1</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="../lib/js/jquery.js"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
-    </script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-    </script>
-    <script src="../lib/js/handler.js"></script>
-    <script>
-        if (navigator.serviceWorker.controller) {
-            navigator.serviceWorker.addEventListener("message", (e) => {
-                if (e.data.msg == "amount") {
-                    let data = e.data.total;
-                    document.getElementById('amount').value = data.currency + " " + data.value / 100;
-                }
-            })
-        } else {
-            document.getElementById('amount').value = "INR 1";
-        }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4CAF50">
+  <title>Phonepe mIntent Flow</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="onPageLoad();">
+  <div id="contents">
+    <h1>Phonepe mIntent Test Application</h1>
+    <p>Please select the payment application</p>
+    <input type="radio" id="phonepe" name="paymentApp" value="phonepe" checked>
+    <label for="phonepe">Phonepe UAT</label><br>
+    <input type="radio" id="phonepeStage" name="paymentApp" value="phonepeStage">
+    <label for="phonepeStage">PhonepeStage</label><br>
+    <input type="radio" id="gpay" name="paymentApp" value="gpay">
+    <label for="gpay">GPay</label><br>
+<!--     <input type="radio" id="other" name="paymentApp" value="other" onclick="changeHandlerOther()">
+    <label for="other">Other</label>
+    <div id="otherPaymentAppInput" class="hiddenElement">
+    <p>Enter intent url: <input style="font-weight: bold; border-color: olivedrab" name="paymentUrl" id="otherPaymentAppPaymentUrl"/></p>
+    </div> -->
+    <p><button style="font-weight: bolder;" onclick="reset()">Reset</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedAppCanMakePayment()">canMakePayment</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedAppHasEnrolledInstrument()">hasEnrolledInstrument</button></p>
+<!--     <p>Enter Supported method url: <input style="font-weight: bold; border-color: olivedrab" name="supportedMethod" id="inputSuportedMethod"/></p> -->
+<!--     <p><button style="font-weight: bolder;" onclick="onNewSupportedMethod()">Use New Supported Method canMake Payment</button></p> -->
+<!--     <p><button style="font-weight: bolder;" onclick="onPayClick()">Initiate show()</button></p> -->
+<!-- <p><button style="font-weight: bolder;" onclick="onProcessClicked()">Proceed</button></p> -->
+    <p><button id="payByPhonepeButton" style="font-weight: bolder;" onclick="onPayClick()" class="">Pay By Payment App</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="../prWithOptions.js"></script>
+<!--   <script src="pr.js"></script> -->
+<!--   <script src="prTemp.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+  <script>
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.addEventListener("message", (e) => {
+            if (e.data.msg == "amount") {
+                let data = e.data.total;
+                document.getElementById('amount').value = data.currency + " " + data.value / 100;
+            }
+        })
+    } else {
+        document.getElementById('amount').value = "INR 1";
+    }
+</script>
 </body>
-
 </html>
