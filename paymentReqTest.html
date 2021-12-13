@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4CAF50">
+  <title>Phonepe mIntent Flow</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="onPageLoad();">
+  <div id="contents">
+    <h1>Phonepe mIntent Test Application</h1>
+    <p>========= Please click on below button =========</p>
+    <!-- <input type="radio" id="phonepe" name="paymentApp" value="phonepe" checked>
+    <label for="phonepe">Phonepe UAT</label><br>
+    <input type="radio" id="phonepeStage" name="paymentApp" value="phonepeStage">
+    <label for="phonepeStage">PhonepeStage</label><br>
+    <input type="radio" id="gpay" name="paymentApp" value="gpay">
+    <label for="gpay">GPay</label><br> -->
+<!--     <input type="radio" id="other" name="paymentApp" value="other" onclick="changeHandlerOther()">
+    <label for="other">Other</label>
+    <div id="otherPaymentAppInput" class="hiddenElement">
+    <p>Enter intent url: <input style="font-weight: bold; border-color: olivedrab" name="paymentUrl" id="otherPaymentAppPaymentUrl"/></p>
+    </div> -->
+    <!-- <p><button style="font-weight: bolder;" onclick="reset()">Reset</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedAppCanMakePayment()">canMakePayment</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedAppHasEnrolledInstrument()">hasEnrolledInstrument</button></p> -->
+<!--     <p>Enter Supported method url: <input style="font-weight: bold; border-color: olivedrab" name="supportedMethod" id="inputSuportedMethod"/></p> -->
+<!--     <p><button style="font-weight: bolder;" onclick="onNewSupportedMethod()">Use New Supported Method canMake Payment</button></p> -->
+<!--     <p><button style="font-weight: bolder;" onclick="onPayClick()">Initiate show()</button></p> -->
+<!-- <p><button style="font-weight: bolder;" onclick="onProcessClicked()">Proceed</button></p> -->
+    <p><button id="payByPhonepeButton" style="font-weight: bolder;" onclick="onPayClick()" class="">Pay By Payment App</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="util.js"></script>
+  <script src="paymentReqTest.js"></script>
+<!--   <script src="pr.js"></script> -->
+<!--   <script src="prTemp.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+</body>
+</html>
