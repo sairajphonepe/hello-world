@@ -142,7 +142,7 @@ const supportedInstrumentsPhonepe = [{
 //         });
 //  }
 
-function onPayClick() { 
+async function onPayClick() { 
 //   let selectedApp = getSelctedApp();
 //     if (selectedApp == "phonepe") {
 //           paymentRequestPhonepe.show()
