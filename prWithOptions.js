@@ -48,6 +48,9 @@ function getSelctedApp() {
   if(document.getElementById("gpay").checked == true) {
     return "gpay";
   }
+  if(document.getElementById("phonepegpay").checked == true) {
+    return "phonepegpay";
+  }
 }
 
 function onPageLoad() {
@@ -77,6 +80,13 @@ function onProceedSelectedAppHasEnrolledInstrument(evt) {
           info("For GPay hasEnrolledInstrument error handler and error= " + err); 
       });
       }
+    if (selectedApp == "phonepegpay") {
+        paymentRequestOther  && paymentRequestOther.hasEnrolledInstrument().then(function(result) {
+          info("For Phonepe and GPay combined  hasEnrolledInstrument result= " + result); 
+      }).catch(function(err) {
+          info("For Phonepe and GPay combined hasEnrolledInstrument error handler and error= " + err); 
+      });
+      }
   console.log("We are here in onProceedSelectedApp hasEnrolledInstrument", evt);
 }
 
@@ -103,6 +113,13 @@ function onProceedSelectedAppCanMakePayment(evt) {
           info("For GPay canMakePayment error handler and error= " + err); 
       });
   }
+  if (selectedApp == "phonepegpay") {
+    paymentRequestOther  && paymentRequestOther.canMakePayment().then(function(result) {
+          info("For Phonepe and GPay combined canMakePayment result= " + result); 
+      }).catch(function(err) {
+          info("For Phonepe and GPay combined canMakePayment error handler and error= " + err); 
+      });
+  }
   console.log("We are here in onProceedSelectedApp canMakePayment", evt);
 }
 
@@ -121,7 +138,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
                     mobileNumber: "8308171711"
           }
       }], transactionDetails);
-  console.log("PaymentRequest created here ", paymentRequestPhonepeStage);
+  console.log("PaymentRequest created here ", paymentRequestPhonepeStage); 
   paymentRequestOther  = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
 }
 
