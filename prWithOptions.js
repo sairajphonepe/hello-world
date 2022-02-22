@@ -136,6 +136,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
       info("Here paymentRequest not supported");
       return;
     }
+  paymentRequestPhonepe && paymentRequestPhonepe.abort();
   paymentRequestPhonepe = new PaymentRequest(supportedInstrumentsPhonepe, transactionDetails);
   const transactionDetailsGPay = {
       id: "super-store-order-123-12312",
@@ -147,7 +148,9 @@ function createPaymentRequest(bDirectApp, sAppUrl){
         }
       }
     };
+  paymentRequestGPay && paymentRequestGPay.abort();
   paymentRequestGPay  = new PaymentRequest(supportedInstrumentGPay, transactionDetailsGPay);
+  paymentRequestPhonepeStage && paymentRequestPhonepeStage.abort();
   paymentRequestPhonepeStage = new PaymentRequest([{
           supportedMethods: ["https://mercury-stg.phonepe.com/transact/pay"],
           data: {
@@ -156,6 +159,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
           }
       }], transactionDetails);
   console.log("PaymentRequest created here ", paymentRequestPhonepeStage); 
+  paymentRequestOther && paymentRequestOther.abort();
   paymentRequestOther  = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
 }
 
