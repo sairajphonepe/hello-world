@@ -146,7 +146,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
           value: '100',
         }
       }
-    }
+    };
   paymentRequestGPay  = new PaymentRequest(supportedInstrumentGPay, transactionDetailsGPay);
   paymentRequestPhonepeStage = new PaymentRequest([{
           supportedMethods: ["https://mercury-stg.phonepe.com/transact/pay"],
