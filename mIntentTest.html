@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4CAF50">
+  <title>Phonepe mIntent Flow</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="onPageLoad();">
+  <div id="contents">
+    <h1>Phonepe mIntent Test Application</h1>
+    <p>Please select the payment application</p>
+    <input type="radio" id="phonepe" name="paymentApp" value="phonepe" checked>
+    <label for="phonepe">Phonepe</label><br>
+    <input type="radio" id="gpay" name="paymentApp" value="gpay">
+    <label for="gpay">GPay</label><br>
+ 
+    <p><button style="font-weight: bolder;" onclick="reset()">Reset</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedAppCanMakePayment()">canMakePayment</button></p>
+    <p><button style="font-weight: bolder;" onclick="onProceedSelectedAppHasEnrolledInstrument()">hasEnrolledInstrument</button></p>
+    
+  </div>
+  <pre id="msg"></pre>
+  <script src="util.js"></script>
+  <script src="prWithOptionsMIntentTest.js"></script>
+</body>
+</html>
