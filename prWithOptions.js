@@ -67,6 +67,18 @@ function onPageLoad() {
 function onProceedSelectedAppHasEnrolledInstrument(evt) {
   let selectedApp = getSelctedApp();
   if (selectedApp == "phonepe") {
+     if(paymentRequestPhonepe) {
+         console.log("Aborting paymentRequestPhonepe");
+         paymentRequestPhonepe.abort();
+    }
+    if(paymentRequestGPay) {
+         console.log("Aborting paymentRequestGPay");
+         paymentRequestGPay.abort();
+    }
+    paymentRequestPhonepe = null;
+    paymentRequestGPay = null;
+    paymentRequestPhonepe = new PaymentRequest(supportedInstrumentsPhonepe, transactionDetails);
+            
     paymentRequestPhonepe && paymentRequestPhonepe.hasEnrolledInstrument().then(function(result) {
           info("For Phonepe hasEnrolledInstrument result= " + result); 
       }).catch(function(err) {
@@ -80,7 +92,28 @@ function onProceedSelectedAppHasEnrolledInstrument(evt) {
           info("For Phonepe stage hasEnrolledInstrument error handler and error= " + err); 
       });
       }
-   if (selectedApp == "gpay") {
+      if (selectedApp == "gpay") {
+        if(paymentRequestPhonepe) {
+          console.log("Aborting paymentRequestPhonepe");
+          paymentRequestPhonepe.abort();
+        }
+        if(paymentRequestGPay) {
+          console.log("Aborting paymentRequestGPay");
+          paymentRequestGPay.abort();
+        }
+        paymentRequestPhonepe = null;
+        paymentRequestGPay = null;
+        const transactionDetailsGPay = {
+                id: "super-store-order-123-12312",
+                total: {
+                  label: 'Total',
+                  amount: {
+                    currency: 'INR',
+                    value: '100',
+                  }
+                }
+              };
+        paymentRequestGPay  = new PaymentRequest(supportedInstrumentGPay, transactionDetailsGPay);
         paymentRequestGPay  && paymentRequestGPay.hasEnrolledInstrument().then(function(result) {
           info("For GPay hasEnrolledInstrument result= " + result); 
       }).catch(function(err) {
