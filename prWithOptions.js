@@ -137,7 +137,17 @@ function createPaymentRequest(bDirectApp, sAppUrl){
       return;
     }
   paymentRequestPhonepe = new PaymentRequest(supportedInstrumentsPhonepe, transactionDetails);
-  paymentRequestGPay  = new PaymentRequest(supportedInstrumentGPay, transactionDetails);
+  const transactionDetailsGPay = {
+      id: "super-store-order-123-12312",
+      total: {
+        label: 'Total',
+        amount: {
+          currency: 'INR',
+          value: '100',
+        }
+      }
+    }
+  paymentRequestGPay  = new PaymentRequest(supportedInstrumentGPay, transactionDetailsGPay);
   paymentRequestPhonepeStage = new PaymentRequest([{
           supportedMethods: ["https://mercury-stg.phonepe.com/transact/pay"],
           data: {
