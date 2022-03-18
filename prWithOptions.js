@@ -17,12 +17,13 @@ const supportedInstrumentsPhonepe = [{
              tn: 'Payment',
            },
          }],
-//       supportedInstrumnetOthers = [{
-//           supportedMethods: ["https://mercury.phonepe.com/transact/pay", "https://tez.google.com/pay"],
-// //           data: {
-// //             url: "upi://pay?pa=PRACT0@ybl&pn=PRACT0&am=1.0&mam=1.0&tid=YBLc6f12c2333b2495fbfd024b12ad43dc7&tr=T2002061921587731419308&tn=Payment%20for%20TX117785240954814000&mc=5311&mode=04&purpose=00"
-// //           }
-//       }],
+      supportedInstrumentsExpressBuy = [{
+          supportedMethods: ["https://mercury-stg.phonepe.com/transact/checkout"],
+          data: {
+            url: "ppe://expressbuy?transactionId=OM2203180832136046667009&utm_campaign=EXPRESSBUY&utm_medium=SWIGGY8&utm_source=expressBuyOrder9s99000",
+            constraints: ["COUPON"]
+          }
+      }],
       supportedInstrumnetOthers = [{
           supportedMethods: ["https://mercury.phonepe.com/transact/pay"],
       },
@@ -58,6 +59,9 @@ function getSelctedApp() {
   if(document.getElementById("phonepegpay").checked == true) {
     return "phonepegpay";
   }
+  if(document.getElementById("expressbuy-stg").checked == true) {
+    return "expressbuy-stg"
+  }
 }
 
 function onPageLoad() {
@@ -67,7 +71,8 @@ function onPageLoad() {
 function onProceedSelectedAppHasEnrolledInstrument(evt) {
   let selectedApp = getSelctedApp();
   if (selectedApp == "phonepe") {
-     if(paymentRequestPhonepe) {
+
+    if(paymentRequestPhonepe) {
          console.log("Aborting paymentRequestPhonepe");
          paymentRequestPhonepe.abort();
     }
@@ -84,19 +89,29 @@ function onProceedSelectedAppHasEnrolledInstrument(evt) {
       }).catch(function(err) {
           info("For Phonepe hasEnrolledInstrument error handler and error= " + err); 
       });
-      } 
-   if (selectedApp == "phonepestage") {
+    } 
+
+    if (selectedApp == "expressbuy-stg") {
+        paymentRequestExpressBuy && paymentRequestExpressBuy.hasEnrolledInstrument().then(function(result) {
+          info("For ExpressBuy Phonepe stage hasEnrolledInstrument result= " + result); 
+      }).catch(function(err) {
+          info("For ExpressBuy Phonepe stage hasEnrolledInstrument error handler and error= " + err); 
+      });
+    }
+
+
+    if (selectedApp == "phonepestage") {
         paymentRequestPhonepeStage  && paymentRequestPhonepeStage.hasEnrolledInstrument().then(function(result) {
           info("For Phonepe stage hasEnrolledInstrument result= " + result); 
       }).catch(function(err) {
           info("For Phonepe stage hasEnrolledInstrument error handler and error= " + err); 
       });
-      }
+    }
       if (selectedApp == "gpay") {
         if(paymentRequestPhonepe) {
           console.log("Aborting paymentRequestPhonepe");
           paymentRequestPhonepe.abort();
-        }
+      }
         if(paymentRequestGPay) {
           console.log("Aborting paymentRequestGPay");
           paymentRequestGPay.abort();
@@ -121,13 +136,13 @@ function onProceedSelectedAppHasEnrolledInstrument(evt) {
       });
       }
     if (selectedApp == "phonepegpay") {
-        paymentRequestOther  && paymentRequestOther.hasEnrolledInstrument().then(function(result) {
+        paymentRequestOther && paymentRequestOther.hasEnrolledInstrument().then(function(result) {
           info("For Phonepe and GPay combined  hasEnrolledInstrument result= " + result); 
       }).catch(function(err) {
           info("For Phonepe and GPay combined hasEnrolledInstrument error handler and error= " + err); 
       });
       }
-  console.log("We are here in onProceedSelectedApp hasEnrolledInstrument", evt);
+    console.log("We are here in onProceedSelectedApp hasEnrolledInstrument", evt);
 }
 
 function onProceedSelectedAppCanMakePayment(evt) {
@@ -182,7 +197,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
       }
     };
   paymentRequestGPay && paymentRequestGPay.abort();
-  paymentRequestGPay  = new PaymentRequest(supportedInstrumentGPay, transactionDetailsGPay);
+  paymentRequestGPay = new PaymentRequest(supportedInstrumentGPay, transactionDetailsGPay);
   paymentRequestPhonepeStage && paymentRequestPhonepeStage.abort();
   paymentRequestPhonepeStage = new PaymentRequest([{
           supportedMethods: ["https://mercury-stg.phonepe.com/transact/pay"],
@@ -193,7 +208,10 @@ function createPaymentRequest(bDirectApp, sAppUrl){
       }], transactionDetails);
   console.log("PaymentRequest created here ", paymentRequestPhonepeStage); 
   paymentRequestOther && paymentRequestOther.abort();
-  paymentRequestOther  = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
+  paymentRequestOther = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
+  paymentRequestExpressBuy = new PaymentRequest(supportedInstrumentsExpressBuy, transactionDetails);
+  console.log("paymentRequestExpressBuy created here ", paymentRequestExpressBuy); 
+
 }
 
 function info(msg) {
@@ -231,6 +249,14 @@ function onPayClick() {
     }
     if (selectedApp == "gpay") {
       paymentRequestGPay.show()
+                        .then(handlePaymentResponse)
+                        .catch(function(err) {
+                          info(err);
+                        });
+    }
+
+    if (selectedApp == "expressbuy-stg") {
+      paymentRequestExpressBuy.show()
                         .then(handlePaymentResponse)
                         .catch(function(err) {
                           info(err);
