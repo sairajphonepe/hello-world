@@ -210,7 +210,9 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   console.log("PaymentRequest created here ", paymentRequestPhonepeStage); 
   paymentRequestOther && paymentRequestOther.abort();
   paymentRequestOther = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
-  paymentRequestExpressBuy && paymentRequestExpressBuy.abort();
+
+  paymentRequestExpressBuy && paymentRequestExpressBuy.abort()
+  paymentRequestExpressBuy = new(supportedInstrumentsExpressBuy, transactionDetails)
 }
 
 function createExpressBuyPaymentRequestObject() {
@@ -222,7 +224,7 @@ function createExpressBuyPaymentRequestObject() {
       }
   }]
   paymentRequestExpressBuy = new PaymentRequest(finalPaymentRequest, transactionDetails)
-  console.log("paymentRequestExpressBuy finalPaymentRequest created here ", paymentRequestExpressBuy)
+  console.log("paymentRequestExpressBuy finalPaymentRequest created here ", JSON.stringify(paymentRequestExpressBuy))
 }
 
 function info(msg) {
