@@ -210,7 +210,9 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   paymentRequestOther && paymentRequestOther.abort();
   paymentRequestOther = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
 
+}
 
+function createExpressBuyPaymentRequestObject() {
   //expressbuy stuff
   const finalPaymentRequest = [{
       supportedMethods: ["https://mercury-stg.phonepe.com/transact/checkout"],
@@ -220,7 +222,6 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   }]
   paymentRequestExpressBuy = new PaymentRequest(finalPaymentRequest, transactionDetails)
   console.log("paymentRequestExpressBuy finalPaymentRequest created here ", paymentRequestExpressBuy)
-
 }
 
 function info(msg) {
@@ -264,6 +265,8 @@ function onPayClick() {
                         });
     }
 
+
+    createExpressBuyPaymentRequestObject()
     if (selectedApp == "expressbuy-stg") {
       paymentRequestExpressBuy.show()
                         .then(handlePaymentResponse)
