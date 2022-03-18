@@ -1,4 +1,4 @@
-let paymentRequestTimeout, paymentRequestPhonepe, paymentRequestPhonepeStage, paymentRequestGPay, paymentRequestOther, timeOutCounter= 0;
+let paymentRequestTimeout, paymentRequestPhonepe, paymentRequestPhonepeStage, paymentRequestGPay, paymentRequestOther, paymentRequestExpressBuy, timeOutCounter= 0;
 const supportedInstrumentsPhonepe = [{
           supportedMethods: ["https://mercury.phonepe.com/transact/pay"],
           data: {
@@ -209,8 +209,17 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   console.log("PaymentRequest created here ", paymentRequestPhonepeStage); 
   paymentRequestOther && paymentRequestOther.abort();
   paymentRequestOther = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
-  paymentRequestExpressBuy = new PaymentRequest(supportedInstrumentsExpressBuy, transactionDetails);
-  console.log("paymentRequestExpressBuy created here ", paymentRequestExpressBuy); 
+
+
+  //expressbuy stuff
+  val finalPaymentRequest = [{
+      supportedMethods: ["https://mercury-stg.phonepe.com/transact/checkout"],
+      data: {
+        url: document.getElementById('expressbuy-stg-url').value,
+      }
+  }],
+  paymentRequestExpressBuy = new PaymentRequest(finalPaymentRequest, transactionDetails)
+  console.log("paymentRequestExpressBuy finalPaymentRequest created here ", paymentRequestExpressBuy)
 
 }
 
