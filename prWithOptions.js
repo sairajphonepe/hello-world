@@ -209,7 +209,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   console.log("PaymentRequest created here ", paymentRequestPhonepeStage); 
   paymentRequestOther && paymentRequestOther.abort();
   paymentRequestOther = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
-
+  paymentRequestExpressBuy && paymentRequestExpressBuy.abort();
 }
 
 function createExpressBuyPaymentRequestObject() {
