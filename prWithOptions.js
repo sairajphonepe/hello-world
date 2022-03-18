@@ -212,7 +212,7 @@ function createPaymentRequest(bDirectApp, sAppUrl){
   paymentRequestOther = new PaymentRequest(supportedInstrumnetOthers, transactionDetails);
 
   paymentRequestExpressBuy && paymentRequestExpressBuy.abort()
-  paymentRequestExpressBuy = new(supportedInstrumentsExpressBuy, transactionDetails)
+  paymentRequestExpressBuy = new PaymentRequest(supportedInstrumentsExpressBuy, transactionDetails)
 }
 
 function createExpressBuyPaymentRequestObject() {
