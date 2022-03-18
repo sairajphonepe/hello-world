@@ -212,12 +212,12 @@ function createPaymentRequest(bDirectApp, sAppUrl){
 
 
   //expressbuy stuff
-  val finalPaymentRequest = [{
+  const finalPaymentRequest = [{
       supportedMethods: ["https://mercury-stg.phonepe.com/transact/checkout"],
       data: {
         url: document.getElementById('expressbuy-stg-url').value,
       }
-  }],
+  }]
   paymentRequestExpressBuy = new PaymentRequest(finalPaymentRequest, transactionDetails)
   console.log("paymentRequestExpressBuy finalPaymentRequest created here ", paymentRequestExpressBuy)
 
@@ -233,7 +233,7 @@ function info(msg) {
 function handlePaymentResponse(response) {
       response.complete('success')
         .then(function() {
-          info('This is a demo website. No payment will be processed. ' + response);
+          info('This is a demo website. No payment will be processed. ' + JSON.stringify(response))
         })
         .catch(function(err) {
           info(err);
