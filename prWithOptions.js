@@ -92,10 +92,11 @@ function onProceedSelectedAppHasEnrolledInstrument(evt) {
     } 
 
     if (selectedApp == "expressbuy-stg") {
+        info('in expressbuy-stg' + JSON.stringify(paymentRequestExpressBuy))
         paymentRequestExpressBuy && paymentRequestExpressBuy.hasEnrolledInstrument().then(function(result) {
-          info("For ExpressBuy Phonepe stage hasEnrolledInstrument result= " + result); 
+        info("For ExpressBuy Phonepe stage hasEnrolledInstrument result= " + result); 
       }).catch(function(err) {
-          info("For ExpressBuy Phonepe stage hasEnrolledInstrument error handler and error= " + err); 
+        info("For ExpressBuy Phonepe stage hasEnrolledInstrument error handler and error= " + err); 
       });
     }
 
